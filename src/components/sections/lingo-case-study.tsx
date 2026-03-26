@@ -234,49 +234,36 @@ export function LingoCaseStudy({
                 backgroundSize: "1024px 1024px",
               }}
             />
-            {/* Layout collage: 3 lignes obliques stables */}
+            {/* Rangée 1 */}
             <div className="absolute inset-0 overflow-hidden">
-              <div className="absolute left-[-110px] top-[-200px] flex rotate-[-7deg] gap-12">
-                {[
-                  lingoCollageScreens[0],
-                  lingoCollageScreens[1],
-                  lingoCollageScreens[2],
-                  lingoCollageScreens[3],
-                ].map((src, i) => (
+              <div className="absolute left-[-200px] top-[-160px] flex rotate-[-11deg] gap-6">
+                {[0, 1, 2, 3, 4, 5, 6, 7].map((i) => (
                   <LingoCollagePhone
-                    key={`row1-${src}-${i}`}
-                    src={src}
-                    className={cn("w-[200px]", i % 2 === 0 ? "rotate-[-12deg]" : "rotate-[-9deg]")}
+                    key={`row1-${i}`}
+                    src={lingoCollageScreens[i % lingoCollageScreens.length]}
+                    className="w-[190px]"
                   />
                 ))}
               </div>
 
-              <div className="absolute left-[-28px] top-[210px] flex rotate-[2deg] gap-10">
-                {[
-                  lingoCollageScreens[4],
-                  lingoCollageScreens[5],
-                  lingoCollageScreens[6],
-                  lingoCollageScreens[7],
-                ].map((src, i) => (
+              {/* Rangée 2 */}
+              <div className="absolute left-[-280px] top-[320px] flex rotate-[-11deg] gap-6">
+                {[2, 3, 4, 5, 6, 7, 8, 9].map((i) => (
                   <LingoCollagePhone
-                    key={`row2-${src}-${i}`}
-                    src={src}
-                    className={cn("w-[210px]", i % 2 === 0 ? "rotate-[-11deg]" : "rotate-[-9deg]")}
+                    key={`row2-${i}`}
+                    src={lingoCollageScreens[i % lingoCollageScreens.length]}
+                    className="w-[190px]"
                   />
                 ))}
               </div>
 
-              <div className="absolute left-[-90px] top-[760px] flex rotate-[-6deg] gap-16">
-                {[
-                  lingoCollageScreens[8],
-                  lingoCollageScreens[9],
-                  lingoCollageScreens[1],
-                  lingoCollageScreens[2],
-                ].map((src, i) => (
+              {/* Rangée 3 */}
+              <div className="absolute left-[-160px] top-[800px] flex rotate-[-11deg] gap-6">
+                {[5, 6, 7, 8, 9, 0, 1, 2].map((i) => (
                   <LingoCollagePhone
-                    key={`row3-${src}-${i}`}
-                    src={src}
-                    className={cn("w-[198px]", i % 2 === 0 ? "rotate-[-12deg]" : "rotate-[-8deg]")}
+                    key={`row3-${i}`}
+                    src={lingoCollageScreens[i % lingoCollageScreens.length]}
+                    className="w-[190px]"
                   />
                 ))}
               </div>

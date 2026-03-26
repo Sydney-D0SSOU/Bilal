@@ -61,7 +61,7 @@ export const projects: Project[] = [
       {
         label: "Site",
         value: "Visiter le site web",
-        href: "https://www.figma.com/proto/71GCNIsPrU2CGigSNrlLvx/Portfolio-Bilal?page-id=72%3A120373&node-id=217-5058&viewport=1254%2C3372%2C0.25&t=qDZT6BTMYtFxCMqg-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=217%3A10586",
+        href: "https://www.figma.com/design/71GCNIsPrU2CGigSNrlLvx/Portfolio-Bilal?node-id=72-84642&t=DK0jQNpZFCfpwmbO-1",
       },
     ],
     gallery: [],
