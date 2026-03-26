@@ -19,7 +19,7 @@ export function Navbar() {
         )}
       >
         <Link href="/" className="text-white font-medium text-[32px] leading-10">
-          {siteConfig.name}
+          M.bilal
         </Link>
 
         <ul className="hidden sm:flex items-center gap-2.5">
