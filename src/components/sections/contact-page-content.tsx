@@ -90,12 +90,21 @@ export function ContactPageContent() {
                 <p className="mb-1 text-lg text-neutral-400">Localisation</p>
                 <p className="text-xl">Bénin, Cotonou</p>
               </div>
+              <div className="border-b border-white/10 pb-4">
+                <p className="mb-1 text-lg text-neutral-400">Numéro de téléphone</p>
+                <p className="text-xl">+229 01 96 31 97 26</p>
+              </div>
             </div>
             
             <div className="space-y-6">
               <h3 className="text-2xl">Réseaux sociaux</h3>
               <div className="flex flex-col gap-4">
-                <a href="#" className="flex items-center gap-3 text-neutral-400 hover:text-white transition-colors">
+                <a
+                  href="https://linkedin.com/in/maoude-bilal-b23a9a128"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 text-neutral-400 hover:text-white transition-colors"
+                >
                    <div className="p-2 border border-neutral-700 rounded-md"><Linkedin size={18}/></div> Linkedin
                 </a>
                 <a href="#" className="flex items-center gap-3 text-neutral-400 hover:text-white transition-colors">

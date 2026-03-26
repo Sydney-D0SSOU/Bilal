@@ -5,7 +5,11 @@ export interface SocialLink {
 }
 
 export const socialLinks: SocialLink[] = [
-  { label: "LinkedIn", href: "https://linkedin.com", icon: "linkedin" },
+  {
+    label: "LinkedIn",
+    href: "https://linkedin.com/in/maoude-bilal-b23a9a128",
+    icon: "linkedin",
+  },
   { label: "Behance", href: "https://behance.net", icon: "behance" },
   { label: "Instagram", href: "https://instagram.com", icon: "instagram" },
   { label: "YouTube", href: "https://youtube.com", icon: "youtube" },

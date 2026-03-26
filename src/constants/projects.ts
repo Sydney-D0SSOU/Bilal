@@ -120,7 +120,6 @@ export const projects: Project[] = [
       { label: "client", value: "Fiwè" },
       { label: "Service", value: "Design graphique" },
       { label: "Année", value: "2026" },
-      { label: "Site", value: "Visiter le site web" },
     ],
     gallery: [],
   },
