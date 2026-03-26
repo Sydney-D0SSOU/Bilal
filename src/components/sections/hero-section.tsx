@@ -344,7 +344,7 @@ export function HeroSection() {
 
         <div style={greeting.style} className="relative z-10 mb-20 flex w-full justify-center max-md:mb-10">
           <p className="text-center text-2xl leading-8 font-normal text-white whitespace-nowrap max-md:text-xl max-md:leading-7 max-md:whitespace-normal">
-            👋, je m&apos;appelle Bilal et je suis un freelance
+             Je m&apos;appelle Bilal et je suis un freelance
           </p>
         </div>
 

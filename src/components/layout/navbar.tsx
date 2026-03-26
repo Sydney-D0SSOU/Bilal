@@ -27,7 +27,7 @@ export function Navbar() {
             <li key={item.href}>
               <Link
                 href={item.href}
-                className="flex items-center justify-center h-11 px-5 text-base text-white tracking-[0.5px] whitespace-nowrap hover:opacity-80 transition-opacity"
+                className="flex h-11 items-center justify-center px-5 text-base tracking-[0.5px] whitespace-nowrap text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:text-[#FDEEC8] hover:[text-shadow:0_0_12px_rgba(253,238,200,0.65)]"
               >
                 {item.label}
               </Link>

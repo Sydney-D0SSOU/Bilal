@@ -1,7 +1,7 @@
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, Linkedin, Instagram, Youtube } from "lucide-react";
 import { Footer } from "@/components/layout/footer";
 import { ContactCTAButton } from "@/components/ui/contact-cta-button";
-import { socialLinks } from "@/constants/social";
+import { socialLinks, type SocialLink } from "@/constants/social";
 import type { Metadata } from "next";
 
 function IconBrain({ className }: { className?: string }) {
@@ -39,6 +39,26 @@ function IconUiDesign({ className }: { className?: string }) {
 
 export const metadata: Metadata = {
   title: "À propos — Bilal MAOUDE",
+};
+
+function BehanceIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      aria-hidden
+      className={className}
+    >
+      <path d="M8.14 10.56c.62-.34.96-.9.96-1.6 0-.58-.23-1.06-.67-1.45-.44-.38-1.05-.58-1.8-.58H2v9.65h4.91c.84 0 1.5-.22 1.98-.65.49-.44.74-1 .74-1.72 0-.93-.5-1.58-1.49-1.95ZM4.2 8.77h2.48c.44 0 .78.1 1.03.3.24.2.36.48.36.84s-.12.63-.37.84c-.24.2-.58.3-1 .3H4.2V8.77Zm2.8 5.98H4.2v-2.06h2.76c.47 0 .84.1 1.1.3.27.2.4.5.4.89s-.13.7-.4.9c-.26.18-.62.28-1.07.28Zm7.96-5.56c-1.16 0-2.07.35-2.72 1.04-.66.69-.99 1.6-.99 2.72 0 1.14.33 2.04.98 2.72.66.68 1.57 1.02 2.75 1.02.93 0 1.7-.2 2.3-.6.61-.4 1.02-.95 1.26-1.67h-1.94c-.3.43-.82.64-1.56.64-.57 0-1.03-.16-1.37-.48-.35-.33-.54-.76-.58-1.3h5.54c.02-.16.03-.33.03-.5 0-1.06-.32-1.92-.95-2.57-.63-.68-1.54-1.02-2.75-1.02Zm-1.84 2.66c.08-.47.27-.84.57-1.12.3-.28.7-.42 1.2-.42.53 0 .95.14 1.24.42.3.28.47.65.52 1.12h-3.53ZM12.2 7.1h5.3V5.9h-5.3v1.2Z" />
+    </svg>
+  );
+}
+
+const iconMap: Record<SocialLink["icon"], React.ComponentType<{ className?: string }>> = {
+  linkedin: Linkedin,
+  behance: BehanceIcon,
+  instagram: Instagram,
+  youtube: Youtube,
 };
 
 const processSteps = [
@@ -85,25 +105,30 @@ export default function AProposPage() {
                   entreprises.
                 </span>
               </p>
-              <div className="flex max-w-[404px] items-center justify-between">
+              <div className="flex max-w-[404px] items-center gap-3">
                 <ContactCTAButton
                   href="/contact"
+                  className="shrink-0"
                   trailingIcon={<ExternalLink className="size-5 shrink-0" />}
                 >
                   Laissez un message
                 </ContactCTAButton>
-                <div className="flex items-center gap-[7px]">
-                  {socialLinks.map((link) => (
-                    <a
-                      key={link.label}
-                      href={link.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex size-8 items-center justify-center rounded border border-neutral-600 text-neutral-300 transition-colors hover:border-white hover:text-white"
-                    >
-                      <span className="text-xs font-bold">in</span>
-                    </a>
-                  ))}
+                <div className="flex shrink-0 items-center gap-[7px]">
+                  {socialLinks.map((link) => {
+                    const Icon = iconMap[link.icon];
+                    return (
+                      <a
+                        key={link.label}
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={link.label}
+                        className="flex h-12 w-12 items-center justify-center rounded-md border border-neutral-400/70 text-neutral-300 transition-colors hover:border-white hover:text-white"
+                      >
+                        <Icon className="h-5 w-5" />
+                      </a>
+                    );
+                  })}
                 </div>
               </div>
             </div>

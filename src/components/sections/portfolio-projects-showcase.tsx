@@ -176,7 +176,7 @@ function MosaicProjectsGrid() {
             alt="Fiwè — laptop sur piédestal"
             fill
             sizes="(max-width: 1024px) 100vw, 40vw"
-            className="object-contain transition-[transform,filter] duration-500 ease-out group-hover:scale-[1.04] group-hover:brightness-[1.08]"
+            className="object-cover transition-[transform,filter] duration-500 ease-out group-hover:scale-[1.04] group-hover:brightness-[1.08]"
           />
         </GlassHoverCardLink>
       </div>

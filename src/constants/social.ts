@@ -1,14 +1,14 @@
 export interface SocialLink {
   label: string;
   href: string;
-  icon: "linkedin" | "github" | "dribbble" | "behance";
+  icon: "linkedin" | "behance" | "instagram" | "youtube";
 }
 
 export const socialLinks: SocialLink[] = [
   { label: "LinkedIn", href: "https://linkedin.com", icon: "linkedin" },
-  { label: "GitHub", href: "https://github.com", icon: "linkedin" },
-  { label: "Dribbble", href: "https://dribbble.com", icon: "linkedin" },
-  { label: "Behance", href: "https://behance.net", icon: "linkedin" },
+  { label: "Behance", href: "https://behance.net", icon: "behance" },
+  { label: "Instagram", href: "https://instagram.com", icon: "instagram" },
+  { label: "YouTube", href: "https://youtube.com", icon: "youtube" },
 ];
 
 export const contactEmail = "bilal.maoude@knowbridge.com";
