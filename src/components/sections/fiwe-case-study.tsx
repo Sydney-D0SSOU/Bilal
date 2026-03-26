@@ -197,7 +197,7 @@ export function FiweCaseStudy({
             priority
           />
           <div className="absolute inset-[8%_5%_6%_5%] hidden md:block">
-            <div className="absolute bottom-0 left-0 w-[58%] max-w-[735px]">
+            <div className="absolute -bottom-[10%] left-[11%] w-[58%] max-w-[735px]">
               <div className="relative aspect-[735/455] w-full overflow-hidden rounded-2xl shadow-[0_10px_15px_-3px_rgba(0,0,0,0.2)]">
                 <Image
                   src={fiweCaseStudyImages.heroDesktop}

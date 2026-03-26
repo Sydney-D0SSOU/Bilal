@@ -107,7 +107,7 @@ export function ContactPageContent() {
         </div>
 
         {/* --- SECTION 3: FAQ --- */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 pt-20 border-t border-white/10">
+        <div id="faq" className="grid grid-cols-1 lg:grid-cols-12 gap-10 pt-20 border-t border-white/10">
           <div className="lg:col-span-4">
             <h2 className="text-4xl font-bold uppercase tracking-widest">FAQ</h2>
             <p className="mt-6 text-neutral-400">Si votre question reste sans réponse...</p>

@@ -1,6 +1,6 @@
 /** Liste « tous les projets » — Figma node 2123:1170 (cartes + texte sous l’image, sans overlay glass). */
 
-export type AllProjectImageFit = "contain" | "cover-bottom";
+export type AllProjectImageFit = "contain" | "cover-bottom" | "cover-center";
 
 export interface AllProjectListingItem {
   title: string;
@@ -8,6 +8,9 @@ export interface AllProjectListingItem {
   href: string;
   image: string;
   imageFit: AllProjectImageFit;
+  imagePosition?: string;
+  cardBackground?: string;
+  containPaddingClass?: string;
 }
 
 export const allProjectsListing: AllProjectListingItem[] = [
@@ -52,5 +55,35 @@ export const allProjectsListing: AllProjectListingItem[] = [
     href: "/projets/lingo",
     image: "/projects/listing/lingo.png",
     imageFit: "cover-bottom",
+  },
+  {
+    title: "KADÉ",
+    meta: "2025 - Logo Design",
+    href: "/projets/kade",
+    image: "/projects/listing/kade.png",
+    imageFit: "cover-center",
+  },
+  {
+    title: "Finagriland",
+    meta: "2025 - Logo Design",
+    href: "/projets/finagriland",
+    image: "/projects/listing/finagriland.png",
+    imageFit: "cover-center",
+  },
+  {
+    title: "SIAB",
+    meta: "2022 - Visuel",
+    href: "/projets/siab",
+    image: "/projects/listing/siab.png",
+    imageFit: "contain",
+    cardBackground: "#ffffff",
+    containPaddingClass: "p-0",
+  },
+  {
+    title: "Le Rural",
+    meta: "2024 - Visuel",
+    href: "/projets/le-rural",
+    image: "/projects/listing/le-rural.png",
+    imageFit: "cover-center",
   },
 ];

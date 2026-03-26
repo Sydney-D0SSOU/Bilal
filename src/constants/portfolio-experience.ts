@@ -34,8 +34,7 @@ export const portfolioExperiences: PortfolioExperienceItem[] = [
     company: "QUALITAT",
     role: "Designer Graphique",
     period: "2022 - 2023",
-    logoSrc: "/logos/experience/qualitat.png",
-    logoImageClassName: "p-1",
+    logoSrc: "/logos/experience/logo%201.png",
   },
   {
     id: "kamgoko",

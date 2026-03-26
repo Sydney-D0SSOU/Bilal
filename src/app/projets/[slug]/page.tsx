@@ -8,6 +8,10 @@ import { AxolusCaseStudy } from "@/components/sections/axolus-case-study";
 import { PnsCaseStudy } from "@/components/sections/pns-case-study";
 import { MtnSelfcareCaseStudy } from "@/components/sections/mtn-selfcare-case-study";
 import { FranchiseHubCaseStudy } from "@/components/sections/franchise-hub-case-study";
+import { SiabCaseStudy } from "@/components/sections/siab-case-study";
+import { KadeCaseStudy } from "@/components/sections/kade-case-study";
+import { LeRuralCaseStudy } from "@/components/sections/le-rural-case-study";
+import { FinagrilandCaseStudy } from "@/components/sections/finagriland-case-study";
 import { projects } from "@/constants/projects";
 
 export function generateStaticParams() {
@@ -117,6 +121,42 @@ export default async function ProjectPage({
     return (
       <>
         <AxolusCaseStudy project={project} details={project.details} />
+        <Footer />
+      </>
+    );
+  }
+
+  if (project.slug === "siab") {
+    return (
+      <>
+        <SiabCaseStudy project={project} details={project.details} />
+        <Footer />
+      </>
+    );
+  }
+
+  if (project.slug === "kade") {
+    return (
+      <>
+        <KadeCaseStudy project={project} details={project.details} />
+        <Footer />
+      </>
+    );
+  }
+
+  if (project.slug === "le-rural") {
+    return (
+      <>
+        <LeRuralCaseStudy project={project} details={project.details} />
+        <Footer />
+      </>
+    );
+  }
+
+  if (project.slug === "finagriland") {
+    return (
+      <>
+        <FinagrilandCaseStudy project={project} details={project.details} />
         <Footer />
       </>
     );

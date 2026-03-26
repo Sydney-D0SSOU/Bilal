@@ -85,16 +85,16 @@ const processSteps = [
 export default function AProposPage() {
   return (
     <>
-      <div className="bg-surface pt-[80px]">
+      <div className="bg-surface pt-[80px] overflow-x-hidden">
         <div className="mx-auto flex max-w-[1248px] flex-col gap-[117px] px-5 py-[147px]">
           {/* Intro */}
-          <div className="flex flex-wrap items-start gap-[213px]">
+          <div className="flex flex-wrap items-start gap-10 lg:gap-[120px] xl:gap-[213px]">
             <div className="max-w-[539px]">
               <h1 className="font-display text-[40px] font-bold leading-[44px] tracking-[4px] text-white">
                 Salut, je suis Bilal MAOUDE.
               </h1>
             </div>
-            <div className="flex min-w-[300px] max-w-[489px] flex-1 flex-col gap-[25px]">
+            <div className="flex w-full min-w-0 max-w-[489px] flex-1 flex-col gap-[25px]">
               <p className="text-2xl leading-8">
                 <span className="text-white">
                   Designer passionné, spécialisé en UX/UI
@@ -105,7 +105,7 @@ export default function AProposPage() {
                   entreprises.
                 </span>
               </p>
-              <div className="flex max-w-[404px] items-center gap-3">
+              <div className="flex w-full flex-wrap items-center gap-3 sm:flex-nowrap">
                 <ContactCTAButton
                   href="/contact"
                   className="shrink-0"

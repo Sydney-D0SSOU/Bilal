@@ -163,7 +163,7 @@ export function MtnSelfcareCaseStudy({
             priority
           />
           <div className="absolute inset-[6%_4%_6%_4%] hidden md:block">
-            <div className="absolute bottom-[10%] left-0 w-[59%] max-w-[735px]">
+            <div className="absolute -bottom-[10%] left-[11%] w-[59%] max-w-[735px]">
               <div className="relative aspect-[735/455] w-full overflow-hidden rounded-2xl shadow-[0_10px_15px_-3px_rgba(0,0,0,0.15)]">
                 <Image
                   src={mtnCaseStudyImages.heroDesktop}

@@ -34,7 +34,7 @@ const iconMap: Record<SocialLink["icon"], React.ComponentType<{ className?: stri
 
 const footerNavCol2 = [
   { label: ctaNavItem.label, href: ctaNavItem.href },
-  { label: "FAQ", href: "/faq" },
+  { label: "FAQ", href: "/contact#faq" },
 ];
 
 export function Footer() {
@@ -44,6 +44,18 @@ export function Footer() {
     } catch {
       /* clipboard unavailable */
     }
+  };
+
+  const handleFaqClick: React.MouseEventHandler<HTMLAnchorElement> = (event) => {
+    if (typeof window === "undefined") return;
+    if (window.location.pathname !== "/contact") return;
+
+    event.preventDefault();
+    const faqSection = document.getElementById("faq");
+    if (!faqSection) return;
+
+    faqSection.scrollIntoView({ behavior: "smooth", block: "start" });
+    window.history.replaceState(null, "", "/contact#faq");
   };
 
   return (
@@ -105,6 +117,7 @@ export function Footer() {
             <li key={item.href}>
               <Link
                 href={item.href}
+                onClick={item.href === "/contact#faq" ? handleFaqClick : undefined}
                 className="flex h-11 items-center justify-center px-5 text-base tracking-[0.5px] text-white transition-opacity hover:opacity-70"
               >
                 {item.label}

@@ -1,14 +1,15 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { navigationItems, ctaNavItem } from "@/constants/navigation";
-import { siteConfig } from "@/constants/site";
 import { cn } from "@/lib/utils";
 import { useScroll } from "@/hooks/use-scroll";
 import { SolidRadialCtaLink } from "@/components/ui/contact-cta-button";
 
 export function Navbar() {
   const isScrolled = useScroll(20);
+  const pathname = usePathname();
 
   return (
       <nav
@@ -19,18 +20,30 @@ export function Navbar() {
         )}
       >
         <Link href="/" className="text-white font-medium text-[32px] leading-10">
-          M.bilal
+          M.Bilal
         </Link>
 
         <ul className="hidden sm:flex items-center gap-2.5">
           {navigationItems.map((item) => (
             <li key={item.href}>
+              {(() => {
+                const isActive =
+                  item.href === "/" ? pathname === "/" : pathname.startsWith(item.href);
+
+                return (
               <Link
                 href={item.href}
-                className="flex h-11 items-center justify-center px-5 text-base tracking-[0.5px] whitespace-nowrap text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:text-[#FDEEC8] hover:[text-shadow:0_0_12px_rgba(253,238,200,0.65)]"
+                className={cn(
+                  "flex h-11 items-center justify-center px-5 text-base tracking-[0.5px] whitespace-nowrap transition-all duration-300 ease-out hover:-translate-y-0.5 hover:text-[#FDEEC8] hover:[text-shadow:0_0_12px_rgba(253,238,200,0.65)]",
+                  isActive
+                    ? "text-[#FDEEC8] [text-shadow:0_0_12px_rgba(253,238,200,0.45)]"
+                    : "text-white"
+                )}
               >
                 {item.label}
               </Link>
+                );
+              })()}
             </li>
           ))}
         </ul>

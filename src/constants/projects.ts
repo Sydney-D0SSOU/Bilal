@@ -150,4 +150,87 @@ export const projects: Project[] = [
       "/projects/lingo/gallery-4.png",
     ],
   },
+  {
+    slug: "kade",
+    title: "KADÉ SKIN CARE",
+    year: "2025",
+    role: "Design graphique",
+    description:
+      "KADÉ SKIN CARE, est une marque spécialisée dans la fabrication de savon noir avec pour objectif de valoriser les soins naturels et authentiques.",
+    heroGradient: "from-[#4b4b49] to-[#131313]",
+    heroImage: "/projects/listing/kade.png",
+    details: [
+      { label: "client", value: "KADÉ" },
+      { label: "Service", value: "Design graphique" },
+      { label: "Année", value: "2025" },
+      {
+        label: "Site",
+        value: "Voir la maquette Figma",
+        href: "https://www.figma.com/design/f9k7xepd854eySpP1c1FaU/MON-SITE?node-id=3408-3686&m=dev",
+      },
+    ],
+    gallery: [],
+  },
+  {
+    slug: "finagriland",
+    title: "FINAGRILAND",
+    year: "2024",
+    role: "Design graphique",
+    description:
+      "FINAGRILAND est un projet ambitieux visant à créer un site agricole innovant et polyvalent.",
+    heroGradient: "from-[#4b4b49] to-[#131313]",
+    heroImage: "/projects/listing/finagriland.png",
+    details: [
+      { label: "client", value: "Finagriland" },
+      { label: "Service", value: "Design graphique" },
+      { label: "Année", value: "2025" },
+      {
+        label: "Site",
+        value: "Voir la maquette Figma",
+        href: "https://www.figma.com/design/f9k7xepd854eySpP1c1FaU/MON-SITE?node-id=3408-3709&m=dev",
+      },
+    ],
+    gallery: [],
+  },
+  {
+    slug: "siab",
+    title: "POINTE TCHIGAN",
+    year: "2022",
+    role: "Design graphique",
+    description:
+      "Conception d'affiches pour la promotion des pointes TCHIGAN de la SIAB.",
+    heroGradient: "from-[#4b4b49] to-[#131313]",
+    heroImage: "/projects/listing/siab.png",
+    details: [
+      { label: "client", value: "SIAB" },
+      { label: "Service", value: "Design graphique" },
+      { label: "Année", value: "2022" },
+      {
+        label: "Site",
+        value: "Voir la maquette Figma",
+        href: "https://www.figma.com/design/f9k7xepd854eySpP1c1FaU/MON-SITE?node-id=3384-2500&m=dev",
+      },
+    ],
+    gallery: [],
+  },
+  {
+    slug: "le-rural",
+    title: "JEU CONCOURS SPÉCIAL FÊTE DES MÈRES",
+    year: "2024",
+    role: "Design graphique",
+    description: "Réalisation de deux visuels pour le groupe Le Rural",
+    heroGradient: "from-[#4b4b49] to-[#131313]",
+    heroImage: "/projects/listing/le-rural.png",
+    details: [
+      { label: "client", value: "Le Rural" },
+      { label: "Service", value: "Design graphique" },
+      { label: "Année", value: "2024" },
+      {
+        label: "Site",
+        value: "Voir la maquette Figma",
+        href: "https://www.figma.com/design/f9k7xepd854eySpP1c1FaU/MON-SITE?node-id=3408-4541&m=dev",
+      },
+    ],
+    gallery: [],
+  },
 ];

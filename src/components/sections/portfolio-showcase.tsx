@@ -84,17 +84,17 @@ function ServiceCard({ service }: { service: typeof services[0] }) {
 }
 
 function ExperienceCard({ experience }: { experience: PortfolioExperienceItem }) {
+  const isDirectLogo =
+    experience.id === "knowide" ||
+    experience.id === "le-rural" ||
+    experience.id === "qualitat-graphic";
+
   return (
     <div className="flex items-center justify-between gap-4 rounded-2xl bg-neutral-700 p-5">
       <div className="flex min-w-0 items-center gap-[25px]">
-        <div
-          className={cn(
-            "flex size-[52px] shrink-0 items-center justify-center overflow-hidden rounded-2xl",
-            experience.logoVariant === "whiteTile" ? "bg-white" : "bg-neutral-800"
-          )}
-        >
-          {/* PNG très larges + SVG : <img> évite les soucis avec next/image */}
-          {/* eslint-disable-next-line @next/next/no-img-element -- logos locaux multi-formats */}
+        {isDirectLogo ? (
+          // Logos demandés en affichage direct (sans tuile/fond).
+          // eslint-disable-next-line @next/next/no-img-element -- logos locaux multi-formats
           <img
             src={experience.logoSrc}
             alt={`Logo ${experience.company}`}
@@ -102,12 +102,31 @@ function ExperienceCard({ experience }: { experience: PortfolioExperienceItem })
             height={48}
             loading="lazy"
             decoding="async"
-            className={cn(
-              "block max-h-[48px] max-w-[48px] object-contain object-center",
-              experience.logoImageClassName
-            )}
+            className={cn("block h-12 w-12 shrink-0 object-contain object-center", experience.logoImageClassName)}
           />
-        </div>
+        ) : (
+          <div
+            className={cn(
+              "flex size-[52px] shrink-0 items-center justify-center overflow-hidden rounded-2xl",
+              experience.logoVariant === "whiteTile" ? "bg-white" : "bg-neutral-800"
+            )}
+          >
+            {/* PNG très larges + SVG : <img> évite les soucis avec next/image */}
+            {/* eslint-disable-next-line @next/next/no-img-element -- logos locaux multi-formats */}
+            <img
+              src={experience.logoSrc}
+              alt={`Logo ${experience.company}`}
+              width={48}
+              height={48}
+              loading="lazy"
+              decoding="async"
+              className={cn(
+                "block max-h-[48px] max-w-[48px] object-contain object-center",
+                experience.logoImageClassName
+              )}
+            />
+          </div>
+        )}
         <div className="flex min-w-0 flex-col gap-0.5 tracking-[0.5px]">
           <p className="text-xl font-medium leading-6 text-white">{experience.company}</p>
           <p className="text-base leading-6 text-neutral-400">{experience.role}</p>

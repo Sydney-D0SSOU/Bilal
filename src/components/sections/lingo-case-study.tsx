@@ -5,12 +5,11 @@ import { GlassHoverCardLink } from "@/components/portfolio/glass-hover-card";
 import {
   lingoAutresProjetsGlass,
   lingoCaseStudyImages,
-  lingoCollageColumns,
+  lingoCollageScreens,
   lingoDetailIntro,
   lingoDetailSecondary,
   lingoFeatureInsets,
 } from "@/constants/lingo-case-study";
-import { DiagonalDrift } from "@/components/ui/diagonal-drift";
 import { cn } from "@/lib/utils";
 import type { Project, ProjectDetail } from "@/constants/projects";
 
@@ -202,17 +201,17 @@ export function LingoCaseStudy({
               aria-hidden
               className="absolute inset-0 bg-gradient-to-b from-[#4f2eb6]/90 to-[#221450]/95"
             />
-            <DiagonalDrift className="absolute inset-0" distance={12} duration={20}>
+            <div className="absolute inset-0">
               <div className="flex h-full flex-wrap items-center justify-center gap-3 p-4">
-                {lingoCollageColumns.flat().slice(0, 6).map((src, i) => (
+                {lingoCollageScreens.slice(0, 6).map((src, i) => (
                   <LingoCollagePhone
                     key={src}
                     src={src}
-                    className={cn("w-[30%]", i % 2 === 0 ? "rotate-[-7deg]" : "rotate-[6deg]")}
+                    className={cn("w-[30%]", i % 2 === 0 ? "rotate-[-11deg]" : "rotate-2")}
                   />
                 ))}
               </div>
-            </DiagonalDrift>
+            </div>
           </div>
 
           <div className="relative hidden aspect-1248/941 w-full md:block">
@@ -235,27 +234,53 @@ export function LingoCaseStudy({
                 backgroundSize: "1024px 1024px",
               }}
             />
-            <DiagonalDrift
-              className="absolute inset-0"
-              distance={14}
-              duration={24}
-              reverse
-            >
-              <div className="flex h-full items-center justify-center px-[4.5%] py-[7%]">
-                <div className="grid w-full max-w-[1110px] grid-cols-5 gap-x-[2.4%] gap-y-[8.5%]">
-                  {lingoCollageColumns.flat().map((src, i) => (
-                    <LingoCollagePhone
-                      key={`${src}-${i}`}
-                      src={src}
-                      className={cn(
-                        "w-full max-w-none",
-                        i % 2 === 0 ? "rotate-[-9deg]" : "rotate-[8deg]"
-                      )}
-                    />
-                  ))}
-                </div>
+            {/* Layout collage: 3 lignes obliques stables */}
+            <div className="absolute inset-0 overflow-hidden">
+              <div className="absolute left-[-110px] top-[-200px] flex rotate-[-7deg] gap-12">
+                {[
+                  lingoCollageScreens[0],
+                  lingoCollageScreens[1],
+                  lingoCollageScreens[2],
+                  lingoCollageScreens[3],
+                ].map((src, i) => (
+                  <LingoCollagePhone
+                    key={`row1-${src}-${i}`}
+                    src={src}
+                    className={cn("w-[200px]", i % 2 === 0 ? "rotate-[-12deg]" : "rotate-[-9deg]")}
+                  />
+                ))}
               </div>
-            </DiagonalDrift>
+
+              <div className="absolute left-[-28px] top-[210px] flex rotate-[2deg] gap-10">
+                {[
+                  lingoCollageScreens[4],
+                  lingoCollageScreens[5],
+                  lingoCollageScreens[6],
+                  lingoCollageScreens[7],
+                ].map((src, i) => (
+                  <LingoCollagePhone
+                    key={`row2-${src}-${i}`}
+                    src={src}
+                    className={cn("w-[210px]", i % 2 === 0 ? "rotate-[-11deg]" : "rotate-[-9deg]")}
+                  />
+                ))}
+              </div>
+
+              <div className="absolute left-[-90px] top-[760px] flex rotate-[-6deg] gap-16">
+                {[
+                  lingoCollageScreens[8],
+                  lingoCollageScreens[9],
+                  lingoCollageScreens[1],
+                  lingoCollageScreens[2],
+                ].map((src, i) => (
+                  <LingoCollagePhone
+                    key={`row3-${src}-${i}`}
+                    src={src}
+                    className={cn("w-[198px]", i % 2 === 0 ? "rotate-[-12deg]" : "rotate-[-8deg]")}
+                  />
+                ))}
+              </div>
+            </div>
           </div>
         </div>
 

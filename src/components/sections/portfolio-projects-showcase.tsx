@@ -51,8 +51,12 @@ function FigmaProjectCard({
   href,
   image,
   imageFit,
+  imagePosition,
+  cardBackground,
+  containPaddingClass,
 }: (typeof allProjectsListing)[number]) {
   const isContain = imageFit === "contain";
+  const isCoverCenter = imageFit === "cover-center";
 
   return (
     <Link
@@ -64,23 +68,28 @@ function FigmaProjectCard({
           "relative h-[min(471px,78vw)] w-full overflow-hidden rounded-2xl sm:h-[471px]",
           "ring-1 ring-white/0 shadow-none transition-[box-shadow,ring-color] duration-300 ease-out",
           "group-hover:ring-white/20 group-hover:shadow-[0_16px_48px_-12px_rgba(0,0,0,0.55)]",
-          isContain
-            ? "flex items-center justify-center"
-            : "flex items-end justify-center"
+          "flex items-center justify-center"
         )}
-        style={{ backgroundImage: CARD_GRADIENT }}
+        style={
+          cardBackground
+            ? { backgroundColor: cardBackground }
+            : { backgroundImage: CARD_GRADIENT }
+        }
       >
         <Image
           src={image}
           alt={title}
           fill
           sizes="(max-width: 1024px) 100vw, 604px"
+          style={imagePosition ? { objectPosition: imagePosition } : undefined}
           className={cn(
             "transition-[transform,filter] duration-500 ease-out",
             "group-hover:scale-[1.02] group-hover:brightness-[1.05]",
             isContain
-              ? "object-contain object-center p-4"
-              : "object-cover object-bottom"
+              ? cn("object-contain object-center p-4", containPaddingClass)
+              : isCoverCenter
+                ? "object-cover object-center"
+                : "object-cover object-bottom"
           )}
         />
       </div>
