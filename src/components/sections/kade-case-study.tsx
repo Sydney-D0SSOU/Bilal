@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowDownLeft, ExternalLink } from "lucide-react";
+import { ArrowDownLeftIcon, ArrowSquareOutIcon } from "@phosphor-icons/react/dist/ssr";
 import type { Project, ProjectDetail } from "@/constants/projects";
 
 const KADE_INTRO =
@@ -32,7 +32,7 @@ function ProjectDetailRow({
             className="flex items-center gap-1.5 underline transition-colors hover:text-white"
           >
             {value}
-            <ExternalLink className="size-5 shrink-0" />
+            <ArrowSquareOutIcon className="size-5 shrink-0" />
           </a>
         ) : (
           <span>{value}</span>
@@ -75,7 +75,7 @@ export function KadeCaseStudy({
               className="inline-flex items-center gap-2 text-2xl text-neutral-300 transition-colors hover:text-white"
             >
               Découvrir
-              <ArrowDownLeft className="size-6 shrink-0 -rotate-90" aria-hidden />
+              <ArrowDownLeftIcon className="size-6 shrink-0 -rotate-90" aria-hidden />
             </Link>
           </div>
         </div>

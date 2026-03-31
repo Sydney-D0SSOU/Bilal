@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import Link from "next/link";
-import { ExternalLink } from "lucide-react";
+import { ArrowSquareOutIcon } from "@phosphor-icons/react";
 import { useRadialHover } from "@/hooks/use-radial-hover";
 import { cn } from "@/lib/utils";
 
@@ -124,7 +124,10 @@ export function DiscoverAllButton() {
     >
       <span
         key={outlineBurstKey}
-        className="pointer-events-none absolute rounded-full bg-white/80"
+        className={cn(
+          "pointer-events-none absolute rounded-full bg-white/80 transition-opacity duration-150",
+          outlineBurstActive ? "opacity-100" : "opacity-0"
+        )}
         style={{
           left: origin.x,
           top: origin.y,
@@ -138,7 +141,7 @@ export function DiscoverAllButton() {
       <span className="relative z-10 inline-flex items-center gap-2.5 text-white">
         <DiscoverButtonDot active={outlineBurstActive} />
         Découvrez tous
-        <ExternalLink className="size-5 shrink-0" />
+        <ArrowSquareOutIcon className="size-5 shrink-0" />
       </span>
     </Link>
   );
@@ -178,7 +181,10 @@ export function GlassEnSavoirPlusPill({
     >
       <span
         key={outlineBurstKey}
-        className="pointer-events-none absolute rounded-full bg-white/80"
+        className={cn(
+          "pointer-events-none absolute rounded-full bg-white/80 transition-opacity duration-150",
+          outlineBurstActive ? "opacity-100" : "opacity-0"
+        )}
         style={{
           left: origin.x,
           top: origin.y,
@@ -193,13 +199,13 @@ export function GlassEnSavoirPlusPill({
         {iconOnly ? (
           <>
             <DiscoverButtonDot active={outlineBurstActive} variant="hero" />
-            <ExternalLink className="size-[18px] shrink-0" aria-hidden />
+            <ArrowSquareOutIcon className="size-[18px] shrink-0" aria-hidden />
           </>
         ) : (
           <>
             <DiscoverButtonDot active={outlineBurstActive} variant="hero" />
             En savoir plus
-            <ExternalLink className="size-4 shrink-0" aria-hidden />
+            <ArrowSquareOutIcon className="size-4 shrink-0" aria-hidden />
           </>
         )}
       </span>
@@ -215,11 +221,13 @@ function GlassProjectOverlay({
   subtitle,
   panelClassName,
   ctaIconOnly,
+  ctaClassName,
 }: {
   title: string;
   subtitle: string;
   panelClassName: string;
   ctaIconOnly?: boolean;
+  ctaClassName?: string;
 }) {
   return (
     <div
@@ -227,8 +235,9 @@ function GlassProjectOverlay({
         "absolute z-20 flex items-center justify-between gap-3",
         "border border-white/20 bg-white/8 shadow-[0_8px_40px_rgba(0,0,0,0.25)] backdrop-blur-[14px]",
         "rounded-2xl",
-        "pointer-events-none opacity-0 transition-opacity duration-300 ease-out",
-        "group-hover:pointer-events-auto group-hover:opacity-100",
+        "pointer-events-none translate-y-1.5 scale-[0.985] opacity-0 transition-[opacity,transform] duration-1200 ease-[cubic-bezier(0.16,1,0.3,1)]",
+        "group-hover:pointer-events-auto group-hover:translate-y-0 group-hover:opacity-100",
+        "group-hover:scale-100",
         panelClassName
       )}
     >
@@ -239,7 +248,7 @@ function GlassProjectOverlay({
         </p>
         <p className="mt-1 text-sm leading-snug text-white/75">{subtitle}</p>
       </div>
-      <GlassEnSavoirPlusPill iconOnly={ctaIconOnly} />
+      <GlassEnSavoirPlusPill iconOnly={ctaIconOnly} className={ctaClassName} />
     </div>
   );
 }
@@ -250,6 +259,7 @@ export function GlassHoverCardLink({
   subtitle,
   overlayClassName,
   overlayCtaIconOnly,
+  overlayCtaClassName,
   className,
   style,
   children,
@@ -259,6 +269,7 @@ export function GlassHoverCardLink({
   subtitle: string;
   overlayClassName: string;
   overlayCtaIconOnly?: boolean;
+  overlayCtaClassName?: string;
   className?: string;
   style?: CSSProperties;
   children: React.ReactNode;
@@ -271,6 +282,7 @@ export function GlassHoverCardLink({
         subtitle={subtitle}
         panelClassName={overlayClassName}
         ctaIconOnly={overlayCtaIconOnly}
+        ctaClassName={overlayCtaClassName}
       />
     </Link>
   );

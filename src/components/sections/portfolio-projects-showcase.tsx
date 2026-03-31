@@ -2,7 +2,6 @@
 
 import type { ReactNode } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import {
   DiscoverAllButton,
   GlassEnSavoirPlusPill,
@@ -20,6 +19,9 @@ const titleClassNameFigma =
 
 const CARD_GRADIENT =
   "linear-gradient(125.81deg, rgb(82, 82, 80) 0%, rgb(19, 19, 19) 63.8%)";
+
+const CARD_IMAGE_DEPTH_MOTION =
+  "transform-gpu transition-[transform,filter] duration-1500 ease-[cubic-bezier(0.16,1,0.3,1)] will-change-transform [transform:translateY(6px)_scale(0.985)_translateZ(0)] [filter:brightness(0.94)_saturate(0.96)] group-hover:[transform:translateY(-7px)_scale(1.028)_translateZ(36px)] group-hover:[filter:brightness(1.04)_saturate(1.03)]";
 
 export type PortfolioProjectsShowcaseProps = {
   titleLevel?: "h1" | "h2";
@@ -57,17 +59,26 @@ function FigmaProjectCard({
 }: (typeof allProjectsListing)[number]) {
   const isContain = imageFit === "contain";
   const isCoverCenter = imageFit === "cover-center";
+  const needsHighContrastOverlay =
+    title.toLowerCase() === "kadé".toLowerCase() ||
+    title.toLowerCase() === "siab" ||
+    cardBackground === "#ffffff";
 
   return (
-    <Link
-      href={href}
-      className="group flex w-full flex-col gap-6 lg:max-w-[604px]"
-    >
-      <div
+    <div className="flex w-full flex-col gap-6 lg:max-w-[604px]">
+      <GlassHoverCardLink
+        href={href}
+        title={title}
+        subtitle={meta}
+        overlayClassName={cn(
+          "bottom-4 left-4 right-4 min-h-[76px] px-3.5 py-3 md:bottom-6 md:left-6 md:right-6 md:min-h-[88px] md:px-4",
+          needsHighContrastOverlay &&
+            "border-white/35 bg-black/35 shadow-[0_12px_40px_rgba(0,0,0,0.45)] backdrop-blur-[18px]"
+        )}
         className={cn(
-          "relative h-[min(471px,78vw)] w-full overflow-hidden rounded-2xl sm:h-[471px]",
-          "ring-1 ring-white/0 shadow-none transition-[box-shadow,ring-color] duration-300 ease-out",
-          "group-hover:ring-white/20 group-hover:shadow-[0_16px_48px_-12px_rgba(0,0,0,0.55)]",
+          "relative h-[min(471px,78vw)] w-full overflow-hidden rounded-2xl perspective-distant sm:h-[471px]",
+          "ring-1 ring-white/0 shadow-none transition-[box-shadow,ring-color] duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)]",
+          "group-hover:ring-white/15 group-hover:shadow-[0_12px_36px_-14px_rgba(0,0,0,0.45)]",
           "flex items-center justify-center"
         )}
         style={
@@ -83,8 +94,7 @@ function FigmaProjectCard({
           sizes="(max-width: 1024px) 100vw, 604px"
           style={imagePosition ? { objectPosition: imagePosition } : undefined}
           className={cn(
-            "transition-[transform,filter] duration-500 ease-out",
-            "group-hover:scale-[1.02] group-hover:brightness-[1.05]",
+            CARD_IMAGE_DEPTH_MOTION,
             isContain
               ? cn("object-contain object-center p-4", containPaddingClass)
               : isCoverCenter
@@ -92,7 +102,7 @@ function FigmaProjectCard({
                 : "object-cover object-bottom"
           )}
         />
-      </div>
+      </GlassHoverCardLink>
 
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between sm:gap-6">
         <div className="flex min-w-0 items-start gap-[15px]">
@@ -110,7 +120,7 @@ function FigmaProjectCard({
 
         <GlassEnSavoirPlusPill className="h-11 shrink-0 self-start px-5 text-base font-normal tracking-[0.5px] sm:self-auto [&>span:last-child]:gap-2.5 [&>span:last-child_svg]:size-5" />
       </div>
-    </Link>
+    </div>
   );
 }
 
@@ -170,7 +180,7 @@ function MosaicProjectsGrid() {
               alt="Fiwè — laptop sur roches"
               fill
               sizes="(max-width: 1024px) 100vw, 57vw"
-              className="object-contain object-bottom transition-[transform,filter] duration-500 ease-out group-hover:scale-[1.04] group-hover:brightness-[1.08]"
+              className={cn("object-contain object-bottom", CARD_IMAGE_DEPTH_MOTION)}
             />
           </div>
         </GlassHoverCardLink>
@@ -185,7 +195,7 @@ function MosaicProjectsGrid() {
             alt="Fiwè — laptop sur piédestal"
             fill
             sizes="(max-width: 1024px) 100vw, 40vw"
-            className="object-cover transition-[transform,filter] duration-500 ease-out group-hover:scale-[1.04] group-hover:brightness-[1.08]"
+            className={cn("object-cover", CARD_IMAGE_DEPTH_MOTION)}
           />
         </GlassHoverCardLink>
       </div>
@@ -203,7 +213,7 @@ function MosaicProjectsGrid() {
               alt="Axolus — branding collage"
               fill
               sizes="(max-width: 1024px) 100vw, 48vw"
-              className="object-cover transition-[transform,filter] duration-500 ease-out group-hover:scale-[1.04] group-hover:brightness-[1.08]"
+              className={cn("object-cover", CARD_IMAGE_DEPTH_MOTION)}
             />
           </GlassHoverCardLink>
           <div className="flex gap-10">
@@ -211,6 +221,7 @@ function MosaicProjectsGrid() {
               href="/projets/lingo"
               {...portfolioGridGlass.lingoPhone}
               overlayCtaIconOnly
+              overlayCtaClassName="h-7 w-15"
               className="relative block aspect-282/336 w-1/2 overflow-hidden rounded-2xl"
               style={{ backgroundImage: "linear-gradient(115deg, #525250 0%, #131313 64%)" }}
             >
@@ -219,22 +230,23 @@ function MosaicProjectsGrid() {
                 alt="Lingo — phone on pebbles"
                 fill
                 sizes="(max-width: 1024px) 50vw, 24vw"
-                className="object-cover transition-[transform,filter] duration-500 ease-out group-hover:scale-[1.04] group-hover:brightness-[1.08]"
+                className={cn("object-cover", CARD_IMAGE_DEPTH_MOTION)}
               />
             </GlassHoverCardLink>
             <GlassHoverCardLink
-              href="/projets/axolus"
+              href="/projets/kade"
               {...portfolioGridGlass.lingoPackaging}
               overlayCtaIconOnly
+              overlayCtaClassName="h-7 w-15"
               className="relative block aspect-282/336 w-1/2 overflow-hidden rounded-2xl"
               style={{ backgroundImage: "linear-gradient(115deg, #525250 0%, #131313 64%)" }}
             >
               <Image
-                src="/projects/grid/5-lingo-cards.png"
-                alt="Lingo — packaging cards"
+                src="/projects/listing/kade.png"
+                alt="KADÉ — logo"
                 fill
                 sizes="(max-width: 1024px) 50vw, 24vw"
-                className="object-cover transition-[transform,filter] duration-500 ease-out group-hover:scale-[1.04] group-hover:brightness-[1.08]"
+                className={cn("object-cover", CARD_IMAGE_DEPTH_MOTION)}
               />
             </GlassHoverCardLink>
           </div>
@@ -254,7 +266,7 @@ function MosaicProjectsGrid() {
             alt="Service public — laptop"
             fill
             sizes="(max-width: 1024px) 100vw, 48vw"
-            className="object-cover transition-[transform,filter] duration-500 ease-out group-hover:scale-[1.04] group-hover:brightness-[1.08]"
+            className={cn("object-cover", CARD_IMAGE_DEPTH_MOTION)}
           />
         </GlassHoverCardLink>
       </div>

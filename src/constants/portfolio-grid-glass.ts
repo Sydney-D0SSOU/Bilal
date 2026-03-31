@@ -25,9 +25,10 @@ export const portfolioGridGlass = {
     overlayClassName: bar,
   },
   lingoPackaging: {
-    title: "Graphisme",
-    subtitle: "Visuel",
-    overlayClassName: bar,
+    title: "KADÉ",
+    subtitle: "Logo Design",
+    overlayClassName:
+      `${bar} border-white/35 bg-black/35 shadow-[0_12px_40px_rgba(0,0,0,0.45)] backdrop-blur-[18px]`,
   },
   servicePublic: {
     title: "Portail national des services",

@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRightIcon } from "@phosphor-icons/react";
 import { PortfolioProjectsShowcase } from "@/components/sections/portfolio-projects-showcase";
 import { PartnerLogosMarquee } from "@/components/sections/partner-logos-marquee";
 import {
@@ -191,7 +191,7 @@ export function PortfolioShowcase() {
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             className="inline-flex h-11 items-center gap-2.5 rounded-lg border border-white px-5 text-base tracking-[0.5px] text-white transition-colors hover:bg-white/10"
           >
-            <ArrowUpRight className="size-5 shrink-0 -rotate-45" />
+            <ArrowUpRightIcon className="size-5 shrink-0 -rotate-45" />
           </button>
         </div>
       </div>

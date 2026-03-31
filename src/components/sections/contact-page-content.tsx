@@ -1,9 +1,16 @@
 "use client";
 
 import { useState } from "react";
-import { Instagram, Linkedin, Plus } from "lucide-react";
+import {
+  BehanceLogoIcon,
+  InstagramLogoIcon,
+  LinkedinLogoIcon,
+  PlusIcon,
+  YoutubeLogoIcon,
+} from "@phosphor-icons/react";
 import { cn } from "@/lib/utils";
 import { SolidRadialCtaButton } from "@/components/ui/contact-cta-button";
+import { socialLinks, type SocialLink } from "@/constants/social";
 
 const faqItems = [
   {
@@ -22,6 +29,13 @@ const faqItems = [
       "Nous avançons par étapes: brief, proposition, validations intermédiaires et livrables finaux avec points de suivi réguliers.",
   },
 ] as const;
+
+const socialIconMap: Record<SocialLink["icon"], React.ComponentType<{ size?: number }>> = {
+  linkedin: LinkedinLogoIcon,
+  behance: BehanceLogoIcon,
+  instagram: InstagramLogoIcon,
+  youtube: YoutubeLogoIcon,
+};
 
 export function ContactPageContent() {
   const [openIndex, setOpenIndex] = useState(0);
@@ -99,17 +113,21 @@ export function ContactPageContent() {
             <div className="space-y-6">
               <h3 className="text-2xl">Réseaux sociaux</h3>
               <div className="flex flex-col gap-4">
-                <a
-                  href="https://linkedin.com/in/maoude-bilal-b23a9a128"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-3 text-neutral-400 hover:text-white transition-colors"
-                >
-                   <div className="p-2 border border-neutral-700 rounded-md"><Linkedin size={18}/></div> Linkedin
-                </a>
-                <a href="#" className="flex items-center gap-3 text-neutral-400 hover:text-white transition-colors">
-                   <div className="p-2 border border-neutral-700 rounded-md"><Instagram size={18}/></div> Instagram
-                </a>
+                {socialLinks.map((link) => {
+                  const Icon = socialIconMap[link.icon];
+                  return (
+                    <a
+                      key={link.label}
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-3 text-neutral-400 transition-colors hover:text-white"
+                    >
+                      <Icon size={32} />
+                      {link.label}
+                    </a>
+                  );
+                })}
               </div>
             </div>
           </aside>
@@ -129,7 +147,7 @@ export function ContactPageContent() {
                   className="w-full flex justify-between items-center text-left"
                 >
                   <span className="text-xl md:text-2xl font-light">{item.question}</span>
-                  <Plus className={cn("transition-transform", openIndex === index && "rotate-45")} />
+                  <PlusIcon className={cn("transition-transform", openIndex === index && "rotate-45")} />
                 </button>
                 {openIndex === index && (
                   <p className="mt-4 text-neutral-400 max-w-2xl leading-relaxed">{item.answer}</p>

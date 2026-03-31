@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { ArrowDownLeft, ExternalLink } from "lucide-react";
+import { ArrowDownLeftIcon, ArrowSquareOutIcon } from "@phosphor-icons/react/dist/ssr";
 import { Footer } from "@/components/layout/footer";
 import { FiweCaseStudy } from "@/components/sections/fiwe-case-study";
 import { LingoCaseStudy } from "@/components/sections/lingo-case-study";
@@ -51,7 +51,7 @@ function ProjectDetailRow({
             className="flex items-center gap-1.5 underline transition-colors hover:text-white"
           >
             {value}
-            <ExternalLink className="size-5" />
+            <ArrowSquareOutIcon className="size-5" />
           </a>
         ) : (
           <span>{value}</span>
@@ -188,7 +188,7 @@ export default async function ProjectPage({
               </div>
               <div className="flex items-center gap-2 text-2xl text-neutral-300">
                 <span>Découvrir</span>
-                <ArrowDownLeft className="size-6 -rotate-90" />
+                <ArrowDownLeftIcon className="size-6 -rotate-90" />
               </div>
             </div>
           </div>
