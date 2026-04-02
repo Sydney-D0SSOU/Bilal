@@ -2,6 +2,7 @@
 
 import type { ReactNode } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import {
   DiscoverAllButton,
   GlassEnSavoirPlusPill,
@@ -59,24 +60,13 @@ function FigmaProjectCard({
 }: (typeof allProjectsListing)[number]) {
   const isContain = imageFit === "contain";
   const isCoverCenter = imageFit === "cover-center";
-  const needsHighContrastOverlay =
-    title.toLowerCase() === "kadé".toLowerCase() ||
-    title.toLowerCase() === "siab" ||
-    cardBackground === "#ffffff";
 
   return (
     <div className="flex w-full flex-col gap-6 lg:max-w-[604px]">
-      <GlassHoverCardLink
+      <Link
         href={href}
-        title={title}
-        subtitle={meta}
-        overlayClassName={cn(
-          "bottom-4 left-4 right-4 min-h-[76px] px-3.5 py-3 md:bottom-6 md:left-6 md:right-6 md:min-h-[88px] md:px-4",
-          needsHighContrastOverlay &&
-            "border-white/35 bg-black/35 shadow-[0_12px_40px_rgba(0,0,0,0.45)] backdrop-blur-[18px]"
-        )}
         className={cn(
-          "relative h-[min(471px,78vw)] w-full overflow-hidden rounded-2xl perspective-distant sm:h-[471px]",
+          "group relative block h-[min(471px,78vw)] w-full overflow-hidden rounded-2xl perspective-distant sm:h-[471px]",
           "ring-1 ring-white/0 shadow-none transition-[box-shadow,ring-color] duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)]",
           "group-hover:ring-white/15 group-hover:shadow-[0_12px_36px_-14px_rgba(0,0,0,0.45)]",
           "flex items-center justify-center"
@@ -102,7 +92,7 @@ function FigmaProjectCard({
                 : "object-cover object-bottom"
           )}
         />
-      </GlassHoverCardLink>
+      </Link>
 
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between sm:gap-6">
         <div className="flex min-w-0 items-start gap-[15px]">
