@@ -24,12 +24,24 @@ function IconBranding({ className }: { className?: string }) {
 function IconUxDesign({ className }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 79 79" fill="none" xmlns="http://www.w3.org/2000/svg">
-      {/* Focus brackets */}
-      <path d="M23.17 9H16.58c-3.64 0-6.58 2.95-6.58 6.58v6.59M10 55.08v6.59c0 3.64 2.95 6.58 6.58 6.58h6.59M56.08 68.25h6.59c3.64 0 6.58-2.95 6.58-6.58v-6.59M69.25 23.17v-6.59c0-3.64-2.95-6.58-6.58-6.58h-6.59" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-      {/* Head (circle) */}
-      <path d="M39.88 38.75c5.45 0 9.88-4.42 9.88-9.88s-4.42-9.88-9.88-9.88-9.88 4.42-9.88 9.88 4.42 9.88 9.88 9.88Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-      {/* Shoulders */}
-      <path d="M62.92 52.17c0-7.27-7.37-13.17-16.46-13.17-9.09 0-16.46 5.9-16.46 13.17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+      {/* Rounded focus corners */}
+      <path
+        d="M24.5 12h-8.2A6.3 6.3 0 0 0 10 18.3v8.2M10 54.5v8.2a6.3 6.3 0 0 0 6.3 6.3h8.2M54.5 69h8.2a6.3 6.3 0 0 0 6.3-6.3v-8.2M69 24.5v-8.2A6.3 6.3 0 0 0 62.7 10h-8.2"
+        stroke="currentColor"
+        strokeWidth="1.55"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      {/* User head */}
+      <circle cx="39.5" cy="31" r="8.5" stroke="currentColor" strokeWidth="1.55" />
+      {/* User shoulders */}
+      <path
+        d="M25.5 56.2c0-6.2 6.3-11.2 14-11.2s14 5 14 11.2"
+        stroke="currentColor"
+        strokeWidth="1.55"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
     </svg>
   );
 }
@@ -71,12 +83,12 @@ const services = [
 function ServiceCard({ service }: { service: typeof services[0] }) {
   const Icon = service.icon;
   return (
-    <div className="flex w-full flex-col items-start rounded-2xl bg-neutral-700/50 p-8 backdrop-blur-[114px]">
-      <Icon className="mb-4 size-20 text-white/90" />
-      <h3 className="mb-2 text-xl font-semibold leading-7 text-white">
+    <div className="flex h-[304px] w-full max-w-[282px] flex-col items-start rounded-2xl bg-neutral-700/50 p-8 backdrop-blur-[114px]">
+      <Icon className="mb-4 size-[79px] text-white/90" />
+      <h3 className="mb-2 h-[41px] text-xl font-semibold leading-7 text-white">
         {service.title}
       </h3>
-      <p className="text-sm leading-5 tracking-[0.25px] text-white/90">
+      <p className="max-w-[193px] text-sm leading-5 tracking-[0.25px] text-white/90">
         {service.description}
       </p>
     </div>
@@ -148,9 +160,9 @@ export function PortfolioShowcase() {
         />
 
         {/* ── Services Section ── */}
-        <div className="flex flex-col gap-10 lg:flex-row lg:gap-10">
-          <div className="shrink-0 lg:w-[240px]">
-            <h3 className="font-display text-[clamp(1.75rem,5vw,2.5rem)] font-medium leading-normal tracking-[1.6px] text-neutral-400">
+        <div className="flex flex-col gap-10 lg:flex-row lg:items-start lg:gap-10">
+          <div className="shrink-0 lg:w-[282px]">
+            <h3 className="font-display text-[clamp(1.75rem,5vw,2.5rem)] font-medium leading-none tracking-[1.6px] text-neutral-400 lg:text-[40px]">
               Comment
               <br />
               puis-je{" "}
@@ -163,7 +175,7 @@ export function PortfolioShowcase() {
               entreprise ?
             </h3>
           </div>
-          <div className="grid min-w-0 flex-1 grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid min-w-0 flex-1 grid-cols-1 justify-items-start gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-10">
             {services.map((service) => (
               <ServiceCard key={service.id} service={service} />
             ))}
@@ -178,7 +190,7 @@ export function PortfolioShowcase() {
             </h3>
             <p className="text-2xl leading-8 text-neutral-300">{portfolioExperienceIntro.body}</p>
           </div>
-          <div className="flex w-full min-w-0 flex-col gap-[30px] lg:max-w-[618px] lg:flex-1">
+          <div className="flex w-full min-w-0 flex-col gap-[30px] lg:flex-1">
             {portfolioExperiences.map((experience) => (
               <ExperienceCard key={experience.id} experience={experience} />
             ))}

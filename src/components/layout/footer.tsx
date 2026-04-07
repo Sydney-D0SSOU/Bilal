@@ -128,7 +128,7 @@ export function Footer() {
             <li key={item.href}>
               <Link
                 href={item.href}
-                className="flex h-11 min-w-[111px] items-center justify-start px-5 text-base tracking-[0.5px] text-white transition-opacity hover:opacity-70"
+                className="flex h-11 min-w-[111px] items-center justify-start px-5 text-base tracking-[0.5px] text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:text-[#FDEEC8]"
               >
                 {item.label}
               </Link>
@@ -142,7 +142,7 @@ export function Footer() {
               <Link
                 href={item.href}
                 onClick={item.href === "/contact#faq" ? handleFaqClick : undefined}
-                className="flex h-11 min-w-[111px] items-center justify-start px-5 text-base tracking-[0.5px] text-white transition-opacity hover:opacity-70"
+                className="flex h-11 min-w-[111px] items-center justify-start px-5 text-base tracking-[0.5px] text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:text-[#FDEEC8]"
               >
                 {item.label}
               </Link>

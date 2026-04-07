@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { motion, useReducedMotion } from "framer-motion";
 import { usePathname } from "next/navigation";
 import { navigationItems, ctaNavItem } from "@/constants/navigation";
 import { cn } from "@/lib/utils";
@@ -10,6 +11,8 @@ import { SolidRadialCtaLink } from "@/components/ui/contact-cta-button";
 export function Navbar() {
   const isScrolled = useScroll(20);
   const pathname = usePathname();
+  const prefersReducedMotion = !!useReducedMotion();
+  const brand = "M.Bilal".split("");
 
   return (
       <nav
@@ -20,7 +23,41 @@ export function Navbar() {
         )}
       >
         <Link href="/" className="text-white font-medium text-[32px] leading-10">
-          M.Bilal
+          <motion.span
+            className="inline-block"
+            initial="hidden"
+            animate="show"
+            variants={{
+              hidden: {},
+              show: prefersReducedMotion
+                ? {}
+                : {
+                    transition: {
+                      delayChildren: 0.1,
+                      staggerChildren: 0.04,
+                    },
+                  },
+            }}
+          >
+            {brand.map((char, index) => (
+              <motion.span
+                key={`${char}-${index}`}
+                className="inline-block"
+                variants={{
+                  hidden: prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 },
+                  show: {
+                    opacity: 1,
+                    y: 0,
+                    transition: prefersReducedMotion
+                      ? { duration: 0 }
+                      : { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
+                  },
+                }}
+              >
+                {char}
+              </motion.span>
+            ))}
+          </motion.span>
         </Link>
 
         <ul className="hidden sm:flex items-center gap-2.5">
@@ -34,9 +71,9 @@ export function Navbar() {
               <Link
                 href={item.href}
                 className={cn(
-                  "flex h-11 items-center justify-center px-5 text-base tracking-[0.5px] whitespace-nowrap transition-all duration-300 ease-out hover:-translate-y-0.5 hover:text-[#FDEEC8] hover:[text-shadow:0_0_12px_rgba(253,238,200,0.65)]",
+                  "flex h-11 items-center justify-center px-5 text-base tracking-[0.5px] whitespace-nowrap transition-all duration-300 ease-out hover:-translate-y-0.5 hover:text-[#FDEEC8]",
                   isActive
-                    ? "text-[#FDEEC8] [text-shadow:0_0_12px_rgba(253,238,200,0.45)]"
+                    ? "text-[#FDEEC8]"
                     : "text-white"
                 )}
               >

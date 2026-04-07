@@ -1,15 +1,19 @@
 Recap modif : 
+
+Navbar : Poussière sur la  ✅
+
 -Tous les projets : 
--Voir les effets hovers (Trop brusques , effet hover zoom calme et elegant )(exactement comme  
+-Voir les effets hovers (Trop brusques , effet hover zoom calme et elegant )(exactement comme ) ✅
 -dotIndicator animation 
 -
 Page projet : 
-icone : seconde card
-card trop 
-Interligne enntre les div de 
+icone : seconde card  ✅
+card trop  ✅
+Interligne enntre les div de  ✅
 Experience aligné avec  dernier card de (soutenez efficacement votre netreprise )
-phosphore icone pour les icone , donc rester vigilant 	
-Footer : 1ere lette toujours aligné 
+phosphore icone pour les icone , donc rester vigilant 	 ✅
+Footer : 1ere lette toujours aligné ✅
 
 Date de franchise 2025 
-axolus 2026
+axolus 2026	
+bilal.maoude@knowbridge.com
