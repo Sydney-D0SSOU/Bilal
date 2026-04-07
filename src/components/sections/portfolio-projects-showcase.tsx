@@ -1,6 +1,8 @@
 "use client";
 
 import type { ReactNode } from "react";
+import { Fragment } from "react";
+import { motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -23,6 +25,65 @@ const CARD_GRADIENT =
 
 const CARD_IMAGE_DEPTH_MOTION =
   "transform-gpu transition-[transform,filter] duration-1500 ease-[cubic-bezier(0.16,1,0.3,1)] will-change-transform [transform:translateY(6px)_scale(0.985)_translateZ(0)] [filter:brightness(0.94)_saturate(0.96)] group-hover:[transform:translateY(-7px)_scale(1.028)_translateZ(36px)] group-hover:[filter:brightness(1.04)_saturate(1.03)]";
+
+const STAIR_EASE = [0.16, 1, 0.3, 1] as const;
+
+function AnimatedWordsLine({
+  text,
+  className,
+  delay = 0,
+  prefersReducedMotion,
+}: {
+  text: string;
+  className?: string;
+  delay?: number;
+  prefersReducedMotion: boolean;
+}) {
+  const words = text.split(" ");
+
+  return (
+    <motion.span
+      className={cn("block", className)}
+      initial="hidden"
+      animate="show"
+      variants={{
+        hidden: {},
+        show: prefersReducedMotion
+          ? {}
+          : {
+              transition: {
+                delayChildren: delay,
+                staggerChildren: 0.055,
+              },
+            },
+      }}
+    >
+      {words.map((word, index) => (
+        <Fragment key={`${word}-${index}`}>
+          <motion.span
+            className="inline-block will-change-transform"
+            variants={{
+              hidden: prefersReducedMotion
+                ? { opacity: 1, y: 0, filter: "blur(0px)" }
+                : { opacity: 0, y: 24, filter: "blur(10px)" },
+              show: {
+                opacity: 1,
+                y: 0,
+                filter: "blur(0px)",
+                transition: prefersReducedMotion
+                  ? { duration: 0 }
+                  : { duration: 0.92, ease: STAIR_EASE },
+              },
+            }}
+          >
+            {word}
+          </motion.span>
+          {index < words.length - 1 ? " " : null}
+        </Fragment>
+      ))}
+    </motion.span>
+  );
+}
 
 export type PortfolioProjectsShowcaseProps = {
   titleLevel?: "h1" | "h2";
@@ -272,6 +333,7 @@ export function PortfolioProjectsShowcase({
   projectsGridVariant = "mosaic",
 }: PortfolioProjectsShowcaseProps) {
   const isFigma = projectsGridVariant === "figma";
+  const prefersReducedMotion = !!useReducedMotion();
 
   return (
     <div className={cn("flex flex-col gap-20", className)}>
@@ -279,45 +341,77 @@ export function PortfolioProjectsShowcase({
         <div className="flex flex-col gap-[30px]">
           {isFigma ? (
             <ProjectsIntroTitle level={titleLevel} className={titleClassNameFigma}>
-              <span className="text-neutral-300">Consulter quelques </span>
-              <br className="hidden sm:block" />
-              <span className="text-neutral-300">projets sur lesquels j&apos;ai </span>
-              <br className="hidden sm:block" />
-              <span className="text-neutral-300">eu à </span>
-              <span className="text-white">travailler récemment</span>
+              <AnimatedWordsLine
+                text="Consulter quelques"
+                className="text-neutral-300"
+                delay={0}
+                prefersReducedMotion={prefersReducedMotion}
+              />
+              <AnimatedWordsLine
+                text="projets sur lesquels j'ai"
+                className="text-neutral-300"
+                delay={0.22}
+                prefersReducedMotion={prefersReducedMotion}
+              />
+              <AnimatedWordsLine
+                text="eu à travailler récemment"
+                className="text-neutral-300"
+                delay={0.44}
+                prefersReducedMotion={prefersReducedMotion}
+              />
             </ProjectsIntroTitle>
           ) : (
             <ProjectsIntroTitle level={titleLevel} className={titleClassNameMosaic}>
-              <span className="text-neutral-300">Consulter quelque</span>
-              <br />
-              <span className="text-neutral-300">projets sur lesquels j&apos;ai</span>
-              <br />
-              <span className="text-neutral-300">eu à </span>
-              <span className="text-white">travailler </span>
-              <span className="text-neutral-300">récemment</span>
+              <AnimatedWordsLine
+                text="Consulter quelque"
+                className="text-neutral-300"
+                delay={0}
+                prefersReducedMotion={prefersReducedMotion}
+              />
+              <AnimatedWordsLine
+                text="projets sur lesquels j'ai"
+                className="text-neutral-300"
+                delay={0.22}
+                prefersReducedMotion={prefersReducedMotion}
+              />
+              <AnimatedWordsLine
+                text="eu à travailler récemment"
+                className="text-neutral-300"
+                delay={0.44}
+                prefersReducedMotion={prefersReducedMotion}
+              />
             </ProjectsIntroTitle>
           )}
 
           {isFigma ? (
             <p className="max-w-[900px] text-2xl leading-8">
-              <span className="text-neutral-300">
-                Les projets sur lesquels j&apos;ai travaillé vont d&apos;entreprises{" "}
-              </span>
-              <span className="text-white">technologiques </span>
-              <span className="text-neutral-300">à des projets de </span>
-              <span className="text-white">
-                commercialisation de produits et de services.
-              </span>
+              <AnimatedWordsLine
+                text="Les projets sur lesquels j'ai travaillé vont d'entreprises technologiques"
+                className="text-neutral-300"
+                delay={0.66}
+                prefersReducedMotion={prefersReducedMotion}
+              />
+              <AnimatedWordsLine
+                text="à des projets de commercialisation de produits et de services."
+                className="text-neutral-300"
+                delay={0.88}
+                prefersReducedMotion={prefersReducedMotion}
+              />
             </p>
           ) : (
             <p className="max-w-2xl text-2xl leading-8 text-neutral-300">
-              Les projets sur lesquels j&apos;ai travaillé vont d&apos;entreprises{" "}
-              <span className="text-white">technologiques</span>
-              <br />
-              à des projets de{" "}
-              <span className="text-white">
-                commercialisation de produits et de services.
-              </span>
+              <AnimatedWordsLine
+                text="Les projets sur lesquels j'ai travaillé vont d'entreprises technologiques"
+                className="text-neutral-300"
+                delay={0.66}
+                prefersReducedMotion={prefersReducedMotion}
+              />
+              <AnimatedWordsLine
+                text="à des projets de commercialisation de produits et de services."
+                className="text-neutral-300"
+                delay={0.88}
+                prefersReducedMotion={prefersReducedMotion}
+              />
             </p>
           )}
         </div>
