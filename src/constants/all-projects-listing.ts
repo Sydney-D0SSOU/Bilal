@@ -20,6 +20,8 @@ export const allProjectsListing: AllProjectListingItem[] = [
     href: "/projets/fiwe",
     image: "/projects/listing/fiwe.png",
     imageFit: "contain",
+    imagePosition: "center bottom",
+    containPaddingClass: "px-0 pt-0 pb-0",
   },
   {
     title: "MTN Selfcare",
