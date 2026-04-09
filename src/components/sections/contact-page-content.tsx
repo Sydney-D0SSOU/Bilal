@@ -10,7 +10,7 @@ import {
 } from "@phosphor-icons/react";
 import { cn } from "@/lib/utils";
 import { SolidRadialCtaButton } from "@/components/ui/contact-cta-button";
-import { socialLinks, type SocialLink } from "@/constants/social";
+import { contactEmail, socialLinks, type SocialLink } from "@/constants/social";
 
 const faqItems = [
   {
@@ -98,7 +98,7 @@ export function ContactPageContent() {
             <div className="space-y-10">
               <div className="border-b border-white/10 pb-4">
                 <p className="mb-1 text-lg text-neutral-400">Adresse email</p>
-                <p className="text-xl">bilal.maoude@knowbridge.com</p>
+                <p className="text-xl">{contactEmail}</p>
               </div>
               <div className="border-b border-white/10 pb-4">
                 <p className="mb-1 text-lg text-neutral-400">Localisation</p>

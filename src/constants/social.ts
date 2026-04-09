@@ -10,10 +10,10 @@ export const socialLinks: SocialLink[] = [
     href: "https://linkedin.com/in/maoude-bilal-b23a9a128",
     icon: "linkedin",
   },
-  { label: "Behance", href: "https://behance.net", icon: "behance" },
+  { label: "Behance", href: "https://www.behance.net/bilalmaoude1", icon: "behance" },
   { label: "Instagram", href: "https://instagram.com", icon: "instagram" },
   { label: "YouTube", href: "https://youtube.com", icon: "youtube" },
 ];
 
-export const contactEmail = "bilal.maoude@knowbridge.com";
+export const contactEmail = "bilalmaoudekassimou@gmail.com";
 export const personalEmail = "bilalmaoudekassimou@gmail.com";

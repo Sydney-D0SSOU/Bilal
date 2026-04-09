@@ -169,7 +169,9 @@ function FigmaProjectCard({
           </div>
         </div>
 
-        <GlassEnSavoirPlusPill className="h-11 shrink-0 self-start px-5 text-base font-normal tracking-[0.5px] sm:self-auto [&>span:last-child]:gap-2.5 [&>span:last-child_svg]:size-5" />
+        <Link href={href} aria-label={`En savoir plus sur ${title}`} className="shrink-0 self-start sm:self-auto">
+          <GlassEnSavoirPlusPill className="h-11 px-5 text-base font-normal tracking-[0.5px] [&>span:last-child]:gap-2.5 [&>span:last-child_svg]:size-5" />
+        </Link>
       </div>
     </div>
   );
