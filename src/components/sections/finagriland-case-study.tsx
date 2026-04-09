@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ArrowDownLeftIcon, ArrowSquareOutIcon } from "@phosphor-icons/react/dist/ssr";
+import { ScrollReveal } from "@/components/ui/scroll-reveal";
 import type { Project, ProjectDetail } from "@/constants/projects";
 
 const finagrilandAssets = {
@@ -116,9 +117,12 @@ export function FinagrilandCaseStudy({
           </div>
         </div>
 
-        <GalleryCard src={finagrilandAssets.hero} alt="Finagriland hero" className="aspect-1248/514 w-full rounded-2xl" />
+        <ScrollReveal>
+          <GalleryCard src={finagrilandAssets.hero} alt="Finagriland hero" className="aspect-1248/514 w-full rounded-2xl" />
+        </ScrollReveal>
 
-        <div className="flex flex-col gap-16 lg:flex-row lg:gap-[135px]">
+        <ScrollReveal delay={0.06}>
+          <div className="flex flex-col gap-16 lg:flex-row lg:gap-[135px]">
           <div className="flex max-w-[402px] flex-col gap-10">
             <h2 className="font-display text-[clamp(1.75rem,4vw,2.5rem)] font-bold leading-[1.1] tracking-[4px] text-white uppercase">
               Détail du projet
@@ -130,9 +134,11 @@ export function FinagrilandCaseStudy({
               <ProjectDetailRow key={detail.label} {...detail} />
             ))}
           </div>
-        </div>
+          </div>
+        </ScrollReveal>
 
-        <div className="space-y-10">
+        <ScrollReveal delay={0.1}>
+          <div className="space-y-10">
           <GalleryCard src={finagrilandAssets.cover1} alt="Finagriland logo usages 1" />
           <GalleryCard src={finagrilandAssets.cover2} alt="Finagriland logo usages 2" />
           <GalleryCard src={finagrilandAssets.cover3} alt="Finagriland logo usages 3" />
@@ -175,7 +181,8 @@ export function FinagrilandCaseStudy({
             <GalleryCard src={finagrilandAssets.duo5} alt="Finagriland promo 1" className="aspect-604/514 w-full rounded-[30px]" />
             <GalleryCard src={finagrilandAssets.duo6} alt="Finagriland promo 2" className="aspect-604/514 w-full rounded-[30px]" />
           </div>
-        </div>
+          </div>
+        </ScrollReveal>
       </div>
     </div>
   );

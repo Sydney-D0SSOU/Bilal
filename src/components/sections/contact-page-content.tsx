@@ -1,6 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import {
+  useEffect,
+  useRef,
+  useState,
+  type ChangeEvent,
+  type ComponentType,
+  type FormEvent,
+} from "react";
 import {
   BehanceLogoIcon,
   InstagramLogoIcon,
@@ -30,7 +37,7 @@ const faqItems = [
   },
 ] as const;
 
-const socialIconMap: Record<SocialLink["icon"], React.ComponentType<{ size?: number }>> = {
+const socialIconMap: Record<SocialLink["icon"], ComponentType<{ size?: number }>> = {
   linkedin: LinkedinLogoIcon,
   behance: BehanceLogoIcon,
   instagram: InstagramLogoIcon,
@@ -39,6 +46,73 @@ const socialIconMap: Record<SocialLink["icon"], React.ComponentType<{ size?: num
 
 export function ContactPageContent() {
   const [openIndex, setOpenIndex] = useState(0);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+    company: "",
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formStatus, setFormStatus] = useState<{
+    type: "success" | "error";
+    message: string;
+  } | null>(null);
+  const statusTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    if (!formStatus) return;
+
+    if (statusTimerRef.current) clearTimeout(statusTimerRef.current);
+    statusTimerRef.current = setTimeout(() => {
+      setFormStatus(null);
+    }, 4200);
+
+    return () => {
+      if (statusTimerRef.current) clearTimeout(statusTimerRef.current);
+    };
+  }, [formStatus]);
+
+  const handleInputChange =
+    (field: "name" | "email" | "message" | "company") =>
+    (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+      setFormData((prev) => ({ ...prev, [field]: event.target.value }));
+    };
+
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setFormStatus(null);
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const data = (await response.json()) as { error?: string };
+
+      if (!response.ok) {
+        throw new Error(data.error ?? "Une erreur est survenue.");
+      }
+
+      setFormStatus({
+        type: "success",
+        message: "Votre message a bien ete envoye. Je vous reponds tres vite.",
+      });
+      setFormData({ name: "", email: "", message: "", company: "" });
+    } catch (error) {
+      setFormStatus({
+        type: "error",
+        message:
+          error instanceof Error
+            ? error.message
+            : "Impossible d'envoyer le message pour le moment.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <main className="bg-[#121113] text-white pt-20">
@@ -61,13 +135,25 @@ export function ContactPageContent() {
         {/* --- SECTION 2: FORMULAIRE & CONTACT --- */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-20">
           {/* Formulaire à gauche (prend environ 60%) */}
-          <form className="lg:col-span-7 flex flex-col gap-12">
+          <form className="lg:col-span-7 flex flex-col gap-12" onSubmit={handleSubmit}>
             <div className="space-y-12">
+              <input
+                type="text"
+                tabIndex={-1}
+                autoComplete="off"
+                value={formData.company}
+                onChange={handleInputChange("company")}
+                className="hidden"
+                aria-hidden
+              />
               <div className="border-b border-white/20 pb-4">
                 <label className="text-xl text-neutral-300">Votre nom complet</label>
                 <input
                   type="text"
+                  value={formData.name}
+                  onChange={handleInputChange("name")}
                   placeholder="Ecrivez votre nom"
+                  required
                   className="w-full bg-transparent pt-4 text-white outline-none placeholder:text-neutral-500"
                 />
               </div>
@@ -75,21 +161,47 @@ export function ContactPageContent() {
                 <label className="text-xl text-neutral-300">Votre e-mail</label>
                 <input
                   type="email"
+                  value={formData.email}
+                  onChange={handleInputChange("email")}
                   placeholder="Ecrivez votre e-mail"
+                  required
                   className="w-full bg-transparent pt-4 text-white outline-none placeholder:text-neutral-500"
                 />
               </div>
               <div className="border-b border-white/20 pb-4">
                 <label className="text-xl text-neutral-300">Votre message</label>
                 <textarea
-                  rows={1}
+                  rows={4}
+                  value={formData.message}
+                  onChange={handleInputChange("message")}
                   placeholder="Ecrivez votre message"
+                  required
                   className="w-full resize-none bg-transparent pt-4 text-white outline-none placeholder:text-neutral-500"
                 />
               </div>
             </div>
-            <SolidRadialCtaButton type="submit" className="self-start">
-              soumettre le formulaire
+            <div
+              aria-live="polite"
+              className={cn(
+                "overflow-hidden transition-all duration-500 ease-out",
+                formStatus ? "max-h-20 opacity-100" : "max-h-0 opacity-0"
+              )}
+            >
+              {formStatus ? (
+                <p
+                  className={cn(
+                    "rounded-lg border px-4 py-2 text-sm backdrop-blur-sm",
+                    formStatus.type === "success"
+                      ? "border-emerald-300/20 bg-emerald-400/10 text-emerald-200"
+                      : "border-rose-300/20 bg-rose-400/10 text-rose-200"
+                  )}
+                >
+                  {formStatus.message}
+                </p>
+              ) : null}
+            </div>
+            <SolidRadialCtaButton type="submit" className="self-start" disabled={isSubmitting}>
+              {isSubmitting ? "envoi en cours..." : "soumettre le formulaire"}
             </SolidRadialCtaButton>
           </form>
 

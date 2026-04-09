@@ -136,11 +136,13 @@ export function SolidRadialCtaButton({
   children,
   trailingIcon,
   className,
+  disabled = false,
 }: {
   type?: "button" | "submit" | "reset";
   children: ReactNode;
   trailingIcon?: ReactNode;
   className?: string;
+  disabled?: boolean;
 }) {
   const { ref, hovered, origin, handleMouseEnter, handleMouseLeave } =
     useRadialHover<HTMLButtonElement>();
@@ -152,9 +154,10 @@ export function SolidRadialCtaButton({
         ref={ref}
         type={type}
         className={cn(
-          "relative inline-flex h-11 items-center justify-center overflow-hidden rounded-lg border border-neutral-200/60 bg-neutral-200 px-5 text-base tracking-[0.5px] whitespace-nowrap transition-transform duration-300 ease-in-out hover:-translate-y-0.5",
+          "relative inline-flex h-11 items-center justify-center overflow-hidden rounded-lg border border-neutral-200/60 bg-neutral-200 px-5 text-base tracking-[0.5px] whitespace-nowrap transition-transform duration-300 ease-in-out hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-70",
           className
         )}
+        disabled={disabled}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >

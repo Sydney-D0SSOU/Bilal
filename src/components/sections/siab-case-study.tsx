@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ArrowDownLeftIcon, ArrowSquareOutIcon } from "@phosphor-icons/react/dist/ssr";
+import { ScrollReveal } from "@/components/ui/scroll-reveal";
 import type { Project, ProjectDetail } from "@/constants/projects";
 
 const SIAB_INTRO =
@@ -80,7 +81,8 @@ export function SiabCaseStudy({
           </div>
         </div>
 
-        <div className="relative aspect-1248/691 w-full overflow-hidden rounded-2xl">
+        <ScrollReveal>
+          <div className="relative aspect-1248/691 w-full overflow-hidden rounded-2xl">
           {/* eslint-disable-next-line @next/next/no-img-element -- remote Figma asset for precise SIAB hero */}
           <img
             src={SIAB_HERO_IMAGE}
@@ -88,9 +90,11 @@ export function SiabCaseStudy({
             className="h-full w-full object-cover"
             decoding="async"
           />
-        </div>
+          </div>
+        </ScrollReveal>
 
-        <div className="flex flex-col gap-16 lg:flex-row lg:gap-[135px]">
+        <ScrollReveal delay={0.06}>
+          <div className="flex flex-col gap-16 lg:flex-row lg:gap-[135px]">
           <div className="flex max-w-[402px] flex-col gap-10">
             <h2 className="font-display text-[clamp(1.75rem,4vw,2.5rem)] font-bold leading-[1.1] tracking-[4px] text-white uppercase">
               Détail du projet
@@ -102,7 +106,8 @@ export function SiabCaseStudy({
               <ProjectDetailRow key={detail.label} {...detail} />
             ))}
           </div>
-        </div>
+          </div>
+        </ScrollReveal>
       </div>
     </div>
   );

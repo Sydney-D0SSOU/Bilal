@@ -14,6 +14,7 @@ import {
   type PnsShowcaseTileDef,
 } from "@/constants/pns-case-study";
 import { DiagonalDrift } from "@/components/ui/diagonal-drift";
+import { ScrollReveal } from "@/components/ui/scroll-reveal";
 import { cn } from "@/lib/utils";
 import type { Project, ProjectDetail } from "@/constants/projects";
 
@@ -153,7 +154,8 @@ export function PnsCaseStudy({
         </div>
 
         {/* Hero — Figma 2697:1694 : fond #092a60 + base + mockups */}
-        <div className="relative h-[min(514px,88vw)] w-full overflow-hidden rounded-2xl bg-[#092a60]">
+        <ScrollReveal>
+          <div className="relative h-[min(514px,88vw)] w-full overflow-hidden rounded-2xl bg-[#092a60]">
           <Image
             src={pnsCaseStudyImages.heroBg}
             alt=""
@@ -198,9 +200,11 @@ export function PnsCaseStudy({
               />
             </div>
           </div>
-        </div>
+          </div>
+        </ScrollReveal>
 
-        <div className="flex flex-col gap-16 lg:flex-row lg:gap-[135px]">
+        <ScrollReveal delay={0.06}>
+          <div className="flex flex-col gap-16 lg:flex-row lg:gap-[135px]">
           <div className="flex max-w-[402px] flex-col gap-10">
             <h2 className="font-display text-[clamp(1.75rem,4vw,2.5rem)] font-bold leading-[1.1] tracking-[4px] text-white uppercase">
               Détail du projet
@@ -212,9 +216,11 @@ export function PnsCaseStudy({
               <ProjectDetailRow key={detail.label} {...detail} />
             ))}
           </div>
-        </div>
+          </div>
+        </ScrollReveal>
 
-        <div
+        <ScrollReveal delay={0.1}>
+          <div
           id="pns-showcase"
           className="relative mx-auto w-full max-w-[1248px] overflow-hidden rounded-2xl bg-[#092a60]"
         >
@@ -263,9 +269,11 @@ export function PnsCaseStudy({
               ))}
             </DiagonalDrift>
           </div>
-        </div>
+          </div>
+        </ScrollReveal>
 
-        <div className="mx-auto flex w-full max-w-[1248px] flex-col gap-10 lg:flex-row lg:items-start lg:justify-between">
+        <ScrollReveal delay={0.12}>
+          <div className="mx-auto flex w-full max-w-[1248px] flex-col gap-10 lg:flex-row lg:items-start lg:justify-between">
           <PnsDeviceFrame
             src={pnsCaseStudyImages.objectifMobileA}
             alt="Portail — accueil mobile et recherche"
@@ -290,7 +298,8 @@ export function PnsCaseStudy({
               className="w-full"
             />
           </div>
-        </div>
+          </div>
+        </ScrollReveal>
 
         <div className="flex flex-col gap-10">
           <h3 className="font-display text-[clamp(1.75rem,4vw,2.5rem)] font-medium tracking-[1.6px] text-neutral-300">
