@@ -319,7 +319,7 @@ function HeroImage() {
 function HeroCTA() {
   return (
     <div className="flex items-center gap-6 -mt-5 relative z-10 flex-wrap justify-center">
-      <HeroButton href="/all-projects" variant="primary">
+      <HeroButton href="/projet" variant="primary">
         Découvrir mes projets
       </HeroButton>
       <HeroButton href="/contact" variant="outline">
