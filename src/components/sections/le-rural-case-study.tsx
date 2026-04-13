@@ -3,8 +3,7 @@ import { ArrowDownLeftIcon, ArrowSquareOutIcon } from "@phosphor-icons/react/dis
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
 import type { Project, ProjectDetail } from "@/constants/projects";
 
-const LE_RURAL_HERO_IMAGE =
-  "https://www.figma.com/api/mcp/asset/1f9b7332-a169-40d9-bfae-16306ef0d6f4";
+const LE_RURAL_HERO_IMAGE = "/projects/case-study/le-rural/hero.png";
 
 function ProjectDetailRow({
   label,
@@ -79,7 +78,7 @@ export function LeRuralCaseStudy({
 
         <ScrollReveal>
           <div className="relative aspect-1248/691 w-full overflow-hidden rounded-2xl">
-          {/* eslint-disable-next-line @next/next/no-img-element -- remote Figma asset for precise Le Rural hero */}
+          {/* eslint-disable-next-line @next/next/no-img-element -- static file keeps image reliable in production */}
           <img
             src={LE_RURAL_HERO_IMAGE}
             alt="Visuels jeu concours fête des mères"

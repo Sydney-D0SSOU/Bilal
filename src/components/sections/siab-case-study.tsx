@@ -9,8 +9,7 @@ const SIAB_INTRO =
 const SIAB_DETAIL =
   "Conception d'affiche pour la société d'acier du Bénin (SIAB)";
 
-const SIAB_HERO_IMAGE =
-  "https://www.figma.com/api/mcp/asset/7d190ea2-d145-445b-8146-911c359d2ccb";
+const SIAB_HERO_IMAGE = "/projects/case-study/siab/hero.png";
 
 function ProjectDetailRow({
   label,
@@ -83,7 +82,7 @@ export function SiabCaseStudy({
 
         <ScrollReveal>
           <div className="relative aspect-1248/691 w-full overflow-hidden rounded-2xl">
-          {/* eslint-disable-next-line @next/next/no-img-element -- remote Figma asset for precise SIAB hero */}
+          {/* eslint-disable-next-line @next/next/no-img-element -- static file keeps image reliable in production */}
           <img
             src={SIAB_HERO_IMAGE}
             alt="Visuel campagne Pointe Tchigan"

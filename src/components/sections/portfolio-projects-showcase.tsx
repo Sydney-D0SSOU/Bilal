@@ -84,12 +84,11 @@ function AnimatedWordsLine({
             className="inline-block will-change-transform"
             variants={{
               hidden: prefersReducedMotion
-                ? { opacity: 1, y: 0, filter: "blur(0px)" }
-                : { opacity: 0, y: 24, filter: "blur(10px)" },
+                ? { opacity: 1, y: 0 }
+                : { opacity: 0, y: 24 },
               show: {
                 opacity: 1,
                 y: 0,
-                filter: "blur(0px)",
                 transition: prefersReducedMotion
                   ? { duration: 0 }
                   : { duration: 0.92, ease: STAIR_EASE },

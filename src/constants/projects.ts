@@ -175,9 +175,9 @@ export const projects: Project[] = [
     heroGradient: "from-[#4b4b49] to-[#131313]",
     heroImage: "/projects/listing/finagriland.png",
     details: [
-      { label: "client", value: "Finagriland" },
+      { label: "Client", value: "Fiwè" },
       { label: "Service", value: "Design graphique" },
-      { label: "Année", value: "2025" },
+      { label: "Année", value: "2024" },
     ],
     gallery: [],
   },

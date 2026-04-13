@@ -9,8 +9,7 @@ const KADE_INTRO =
 const KADE_DETAIL =
   "Conception d'un logo incarnant fidèlement les valeurs et l'identité de la marque.";
 
-const KADE_HERO_IMAGE =
-  "https://www.figma.com/api/mcp/asset/be0b4cd5-be6a-43df-9a6b-43d9a1c4a198";
+const KADE_HERO_IMAGE = "/projects/case-study/kade/hero.png";
 
 function ProjectDetailRow({
   label,
@@ -83,7 +82,7 @@ export function KadeCaseStudy({
 
         <ScrollReveal>
           <div className="relative aspect-1248/691 w-full overflow-hidden rounded-2xl">
-          {/* eslint-disable-next-line @next/next/no-img-element -- remote Figma asset for precise KADE hero */}
+          {/* eslint-disable-next-line @next/next/no-img-element -- static file keeps image reliable in production */}
           <img
             src={KADE_HERO_IMAGE}
             alt="Déclinaison logo KADÉ Skin Care"

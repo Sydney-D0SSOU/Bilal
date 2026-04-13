@@ -4,22 +4,22 @@ import { ScrollReveal } from "@/components/ui/scroll-reveal";
 import type { Project, ProjectDetail } from "@/constants/projects";
 
 const finagrilandAssets = {
-  hero: "https://www.figma.com/api/mcp/asset/3e68ae08-df5d-4d1d-9c26-c095b6a21f78",
-  cover1: "https://www.figma.com/api/mcp/asset/033e65fb-6420-4cc8-b51e-7945f99c129b",
-  cover2: "https://www.figma.com/api/mcp/asset/68d3dd37-6432-4ffd-b381-21f6d23fa425",
-  cover3: "https://www.figma.com/api/mcp/asset/de39a1bd-af83-4c90-8ce5-4630a20f55de",
-  cover4: "https://www.figma.com/api/mcp/asset/26165602-fc1d-42a2-8da2-2dff0e334424",
-  cover5: "https://www.figma.com/api/mcp/asset/ee254124-4df9-48f6-ad40-61ad145157a0",
-  cover6: "https://www.figma.com/api/mcp/asset/3f1c800e-55d5-43e4-a045-0680eca5abf8",
-  duo1: "https://www.figma.com/api/mcp/asset/725e3c46-5bd0-4376-8e0f-ca3bf859988f",
-  duo2: "https://www.figma.com/api/mcp/asset/f247c7bc-a666-4ad1-b803-264b7da6a65e",
-  cover7: "https://www.figma.com/api/mcp/asset/5b49cc66-67e2-418f-9b6e-00b5c301bab0",
-  cover8: "https://www.figma.com/api/mcp/asset/726b9301-60e2-42bd-b1ec-29274d556f6a",
-  cover9: "https://www.figma.com/api/mcp/asset/e99654bd-ea5b-42a0-92d9-a4b45d205548",
-  duo3: "https://www.figma.com/api/mcp/asset/e3bd2e4a-0074-4376-98ec-6bd29a328e3d",
-  duo4: "https://www.figma.com/api/mcp/asset/b30a860e-a90e-40bf-8fc0-70c3f16caac7",
-  duo5: "https://www.figma.com/api/mcp/asset/31e8f1bb-b145-46a4-8b20-5fe65fe32f7e",
-  duo6: "https://www.figma.com/api/mcp/asset/ecc1a99d-1f1d-4d08-9256-a3c03ef773c8",
+  hero: "/projects/case-study/finagriland/hero.png",
+  cover1: "/projects/case-study/finagriland/cover-1.png",
+  cover2: "/projects/case-study/finagriland/cover-2.png",
+  cover3: "/projects/case-study/finagriland/cover-3.png",
+  cover4: "/projects/case-study/finagriland/cover-4.png",
+  cover5: "/projects/case-study/finagriland/cover-5.png",
+  cover6: "/projects/case-study/finagriland/cover-6.png",
+  cover7: "/projects/case-study/finagriland/cover-7.png",
+  cover8: "/projects/case-study/finagriland/cover-8.png",
+  cover9: "/projects/case-study/finagriland/cover-9.png",
+  duo1: "/projects/case-study/finagriland/duo-1.png",
+  duo2: "/projects/case-study/finagriland/duo-2.png",
+  duo3: "/projects/case-study/finagriland/duo-3.png",
+  duo4: "/projects/case-study/finagriland/duo-4.png",
+  duo5: "/projects/case-study/finagriland/duo-5.png",
+  duo6: "/projects/case-study/finagriland/duo-6.png",
 };
 
 const FINAGRILAND_DETAIL =
@@ -57,23 +57,48 @@ function ProjectDetailRow({
   );
 }
 
-function GalleryCard({
+function FullWidthImage({
   src,
   alt,
-  className = "aspect-1248/691 w-full rounded-2xl",
-  backgroundClassName = "bg-neutral-900",
-  imageClassName = "h-full w-full object-cover",
+  bg = "bg-black",
 }: {
   src: string;
   alt: string;
-  className?: string;
-  backgroundClassName?: string;
-  imageClassName?: string;
+  bg?: string;
 }) {
   return (
-    <div className={`relative overflow-hidden ${backgroundClassName} ${className}`}>
-      {/* eslint-disable-next-line @next/next/no-img-element -- remote Figma assets for visual parity */}
-      <img src={src} alt={alt} className={imageClassName} decoding="async" />
+    <div className={`relative aspect-[1248/691] w-full overflow-hidden rounded-2xl ${bg}`}>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={src}
+        alt={alt}
+        className="absolute inset-0 h-full w-full object-cover rounded-2xl"
+        decoding="async"
+      />
+    </div>
+  );
+}
+
+function DuoImage({
+  src,
+  alt,
+  bg = "bg-[#cfc0bd]",
+}: {
+  src: string;
+  alt: string;
+  bg?: string;
+}) {
+  return (
+    <div
+      className={`relative aspect-[604/514] w-full overflow-hidden rounded-[30px] border border-neutral-800 ${bg}`}
+    >
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={src}
+        alt={alt}
+        className="absolute inset-0 h-full w-full object-cover rounded-[30px]"
+        decoding="async"
+      />
     </div>
   );
 }
@@ -86,11 +111,12 @@ export function FinagrilandCaseStudy({
   details: ProjectDetail[];
 }) {
   return (
-    <div className="bg-surface pt-[80px]">
-      <div className="mx-auto flex max-w-[1248px] flex-col gap-20 px-5 py-[clamp(4rem,12vw,9.5rem)]">
-        <div className="flex flex-col gap-[clamp(3rem,10vw,7.5rem)]">
+    <div className="bg-surface pt-[80px] pb-0">
+      <div className="mx-auto flex max-w-[1248px] flex-col gap-20 px-5 pt-12 pb-0">
+        {/* Title row */}
+        <div className="flex flex-col gap-8">
           <div className="flex flex-wrap items-center justify-between gap-4">
-            <span className="font-display text-[clamp(1.75rem,5vw,2.5rem)] font-bold leading-[1.1] tracking-[4px] text-white">
+            <span className="font-display text-[clamp(1.75rem,5vw,2.5rem)] font-bold leading-[1.1] tracking-[4px] text-white uppercase">
               {project.title}
             </span>
             <span className="font-display text-[clamp(1.75rem,5vw,2.5rem)] font-bold leading-[1.1] tracking-[4px] text-neutral-300">
@@ -98,91 +124,93 @@ export function FinagrilandCaseStudy({
             </span>
           </div>
 
-          <div className="flex flex-wrap items-end justify-between gap-10">
-            <div className="flex max-w-[572px] flex-col gap-10">
+          {/* Role + description + Découvrir */}
+          <div className="flex flex-wrap items-end justify-between gap-6">
+            <div className="flex w-full max-w-[572px] flex-col gap-6">
               <h1 className="font-display text-[clamp(1.75rem,5vw,2.5rem)] font-bold leading-[1.1] tracking-[4px] text-white uppercase">
                 {project.role}
               </h1>
-              <p className="text-2xl leading-8 text-neutral-300">
-                FINAGRILAND est un projet ambitieux visant à créer un site agricole innovant et polyvalent.
+              <p className="text-lg leading-7 text-neutral-300 sm:text-2xl sm:leading-8">
+                FINAGRILAND est un projet ambitieux visant à créer un site
+                agricole innovant et polyvalent.
               </p>
             </div>
             <Link
               href="/all-projects"
-              className="inline-flex items-center gap-2 text-2xl text-neutral-300 transition-colors hover:text-white"
+              className="inline-flex items-center gap-2 text-xl text-neutral-300 transition-colors hover:text-white sm:text-2xl"
             >
               Découvrir
-              <ArrowDownLeftIcon className="size-6 shrink-0 -rotate-90" aria-hidden />
+              <ArrowDownLeftIcon className="size-5 shrink-0 -rotate-90 sm:size-6" aria-hidden />
             </Link>
           </div>
         </div>
 
+        {/* Hero image */}
         <ScrollReveal>
-          <GalleryCard src={finagrilandAssets.hero} alt="Finagriland hero" className="aspect-1248/514 w-full rounded-2xl" />
+          <div className="relative aspect-[1248/514] w-full overflow-hidden rounded-2xl">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={finagrilandAssets.hero}
+              alt="Finagriland hero"
+              className="absolute inset-0 h-full w-full object-cover rounded-2xl"
+              decoding="async"
+            />
+          </div>
         </ScrollReveal>
 
+        {/* Détail du projet — two columns */}
         <ScrollReveal delay={0.06}>
-          <div className="flex flex-col gap-16 lg:flex-row lg:gap-[135px]">
-          <div className="flex max-w-[402px] flex-col gap-10">
-            <h2 className="font-display text-[clamp(1.75rem,4vw,2.5rem)] font-bold leading-[1.1] tracking-[4px] text-white uppercase">
-              Détail du projet
-            </h2>
-            <p className="text-2xl leading-8 text-neutral-300">{FINAGRILAND_DETAIL}</p>
-          </div>
-          <div className="flex min-w-0 flex-1 flex-col gap-6 lg:min-w-[400px]">
-            {details.map((detail) => (
-              <ProjectDetailRow key={detail.label} {...detail} />
-            ))}
-          </div>
-          </div>
-        </ScrollReveal>
-
-        <ScrollReveal delay={0.1}>
-          <div className="space-y-10">
-          <GalleryCard src={finagrilandAssets.cover1} alt="Finagriland logo usages 1" />
-          <GalleryCard src={finagrilandAssets.cover2} alt="Finagriland logo usages 2" />
-          <GalleryCard src={finagrilandAssets.cover3} alt="Finagriland logo usages 3" />
-          <GalleryCard src={finagrilandAssets.cover4} alt="Finagriland logo usages 4" />
-          <GalleryCard
-            src={finagrilandAssets.cover5}
-            alt="Finagriland déclinaisons"
-            backgroundClassName="bg-white"
-            imageClassName="h-full w-full object-contain p-4"
-          />
-          <GalleryCard src={finagrilandAssets.cover6} alt="Finagriland chartes couleurs" />
-
-          <div className="grid grid-cols-1 gap-10 lg:grid-cols-2">
-            <GalleryCard
-              src={finagrilandAssets.duo1}
-              alt="Finagriland mockup 1"
-              className="aspect-604/514 w-full rounded-[30px]"
-              backgroundClassName="bg-[#cfc0bd]"
-              imageClassName="h-full w-full object-contain p-4"
-            />
-            <GalleryCard
-              src={finagrilandAssets.duo2}
-              alt="Finagriland mockup 2"
-              className="aspect-604/514 w-full rounded-[30px]"
-              backgroundClassName="bg-[#cfc0bd]"
-              imageClassName="h-full w-full object-contain p-4"
-            />
-          </div>
-
-          <GalleryCard src={finagrilandAssets.cover7} alt="Finagriland mockup 3" />
-          <GalleryCard src={finagrilandAssets.cover8} alt="Finagriland mockup 4" />
-          <GalleryCard src={finagrilandAssets.cover9} alt="Finagriland mockup 5" />
-
-          <div className="grid grid-cols-1 gap-10 lg:grid-cols-2">
-            <GalleryCard src={finagrilandAssets.duo3} alt="Finagriland produit 1" className="aspect-604/514 w-full rounded-[30px]" />
-            <GalleryCard src={finagrilandAssets.duo4} alt="Finagriland produit 2" className="aspect-604/514 w-full rounded-[30px]" />
-          </div>
-
-          <div className="grid grid-cols-1 gap-10 lg:grid-cols-2">
-            <GalleryCard src={finagrilandAssets.duo5} alt="Finagriland promo 1" className="aspect-604/514 w-full rounded-[30px]" />
-            <GalleryCard src={finagrilandAssets.duo6} alt="Finagriland promo 2" className="aspect-604/514 w-full rounded-[30px]" />
-          </div>
+          <div className="flex flex-col gap-8 md:flex-row md:gap-16">
+            <div className="flex w-full max-w-[402px] shrink-0 flex-col gap-6">
+              <h2 className="font-display text-[clamp(1.5rem,4vw,2.5rem)] font-bold leading-[1.1] tracking-[4px] text-white uppercase">
+                Détail du projet
+              </h2>
+              <p className="text-lg leading-7 text-neutral-300 sm:text-2xl sm:leading-8">
+                {FINAGRILAND_DETAIL}
+              </p>
+            </div>
+            <div className="flex min-w-0 flex-1 flex-col gap-6">
+              {details.map((detail) => (
+                <ProjectDetailRow key={detail.label} {...detail} />
+              ))}
+            </div>
           </div>
         </ScrollReveal>
+
+        {/* Gallery */}
+        <div className="flex flex-col gap-2">
+          <ScrollReveal><FullWidthImage src={finagrilandAssets.cover1} alt="Finagriland — À propos" bg="bg-black" /></ScrollReveal>
+          <ScrollReveal><FullWidthImage src={finagrilandAssets.cover2} alt="Finagriland — logotype variantes" bg="bg-black" /></ScrollReveal>
+          <ScrollReveal><FullWidthImage src={finagrilandAssets.cover3} alt="Finagriland — logo" /></ScrollReveal>
+          <ScrollReveal><FullWidthImage src={finagrilandAssets.cover4} alt="Finagriland — déclinaisons logo" bg="bg-black" /></ScrollReveal>
+          <ScrollReveal><FullWidthImage src={finagrilandAssets.cover5} alt="Finagriland — déclinaisons fond blanc" bg="bg-white" /></ScrollReveal>
+          <ScrollReveal><FullWidthImage src={finagrilandAssets.cover6} alt="Finagriland — papeterie" bg="bg-black" /></ScrollReveal>
+
+          <ScrollReveal>
+            <div className="flex flex-col gap-2 md:flex-row">
+              <DuoImage src={finagrilandAssets.duo1} alt="Finagriland — mockup casquette" bg="bg-[#cfc0bd]" />
+              <DuoImage src={finagrilandAssets.duo2} alt="Finagriland — mockup t-shirt" bg="bg-[#cfc0bd]" />
+            </div>
+          </ScrollReveal>
+
+          <ScrollReveal><FullWidthImage src={finagrilandAssets.cover7} alt="Finagriland — carte de visite" bg="bg-black" /></ScrollReveal>
+          <ScrollReveal><FullWidthImage src={finagrilandAssets.cover8} alt="Finagriland — panneau" /></ScrollReveal>
+          <ScrollReveal><FullWidthImage src={finagrilandAssets.cover9} alt="Finagriland — packaging" /></ScrollReveal>
+
+          <ScrollReveal>
+            <div className="flex flex-col gap-2 md:flex-row">
+              <DuoImage src={finagrilandAssets.duo3} alt="Finagriland — produit confiture" bg="bg-[#fafafa]" />
+              <DuoImage src={finagrilandAssets.duo4} alt="Finagriland — produit jus" bg="bg-[#fafafa]" />
+            </div>
+          </ScrollReveal>
+
+          <ScrollReveal>
+            <div className="flex flex-col gap-2 md:flex-row">
+              <DuoImage src={finagrilandAssets.duo5} alt="Finagriland — visuel promo" bg="bg-[#fafafa]" />
+              <DuoImage src={finagrilandAssets.duo6} alt="Finagriland — visuel confiture" bg="bg-[#cfc0bd]" />
+            </div>
+          </ScrollReveal>
+        </div>
       </div>
     </div>
   );
