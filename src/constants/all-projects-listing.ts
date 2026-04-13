@@ -1,6 +1,7 @@
 /** Liste « tous les projets » — Figma node 2123:1170 (cartes + texte sous l’image, sans overlay glass). */
 
 export type AllProjectImageFit = "contain" | "cover-bottom" | "cover-center";
+export type AllProjectCategory = "ux" | "design-graphique";
 
 export interface AllProjectListingItem {
   title: string;
@@ -11,6 +12,7 @@ export interface AllProjectListingItem {
   imagePosition?: string;
   cardBackground?: string;
   containPaddingClass?: string;
+  categories: AllProjectCategory[];
 }
 
 export const allProjectsListing: AllProjectListingItem[] = [
@@ -22,6 +24,7 @@ export const allProjectsListing: AllProjectListingItem[] = [
     imageFit: "contain",
     imagePosition: "center bottom",
     containPaddingClass: "px-0 pt-0 pb-0",
+    categories: ["ux"],
   },
   {
     title: "MTN Selfcare",
@@ -29,6 +32,7 @@ export const allProjectsListing: AllProjectListingItem[] = [
     href: "/projets/mtn-selfcare",
     image: "/projects/listing/mtn-selfcare.png",
     imageFit: "cover-bottom",
+    categories: ["ux"],
   },
   {
     title: "Franchise Hub Services",
@@ -36,6 +40,7 @@ export const allProjectsListing: AllProjectListingItem[] = [
     href: "/projets/franchise-hub-services",
     image: "/projects/listing/franchise-hub.png",
     imageFit: "cover-bottom",
+    categories: ["ux"],
   },
   {
     title: "Axolus",
@@ -43,6 +48,7 @@ export const allProjectsListing: AllProjectListingItem[] = [
     href: "/projets/axolus",
     image: "/projects/listing/axolus.png",
     imageFit: "cover-bottom",
+    categories: ["design-graphique"],
   },
   {
     title: "Portail national des services",
@@ -50,6 +56,7 @@ export const allProjectsListing: AllProjectListingItem[] = [
     href: "/projets/portail-national-services",
     image: "/projects/listing/pns.png",
     imageFit: "cover-bottom",
+    categories: ["ux"],
   },
   {
     title: "Lingo +",
@@ -57,6 +64,7 @@ export const allProjectsListing: AllProjectListingItem[] = [
     href: "/projets/lingo",
     image: "/projects/listing/lingo.png",
     imageFit: "cover-bottom",
+    categories: ["ux"],
   },
   {
     title: "KADÉ",
@@ -64,6 +72,7 @@ export const allProjectsListing: AllProjectListingItem[] = [
     href: "/projets/kade",
     image: "/projects/listing/kade.png",
     imageFit: "cover-center",
+    categories: ["design-graphique"],
   },
   {
     title: "Finagriland",
@@ -71,6 +80,7 @@ export const allProjectsListing: AllProjectListingItem[] = [
     href: "/projets/finagriland",
     image: "/projects/listing/finagriland.png",
     imageFit: "cover-center",
+    categories: ["design-graphique"],
   },
   {
     title: "SIAB",
@@ -80,6 +90,7 @@ export const allProjectsListing: AllProjectListingItem[] = [
     imageFit: "contain",
     cardBackground: "#ffffff",
     containPaddingClass: "p-0",
+    categories: ["design-graphique"],
   },
   {
     title: "Le Rural",
@@ -87,5 +98,6 @@ export const allProjectsListing: AllProjectListingItem[] = [
     href: "/projets/le-rural",
     image: "/projects/listing/le-rural.png",
     imageFit: "cover-center",
+    categories: ["design-graphique"],
   },
 ];

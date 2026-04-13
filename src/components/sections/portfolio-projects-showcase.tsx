@@ -1,8 +1,9 @@
 "use client";
 
 import type { ReactNode } from "react";
-import { Fragment } from "react";
+import { Fragment, useMemo, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
+import { FadersHorizontalIcon } from "@phosphor-icons/react";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -10,7 +11,7 @@ import {
   GlassEnSavoirPlusPill,
   GlassHoverCardLink,
 } from "@/components/portfolio/glass-hover-card";
-import { allProjectsListing } from "@/constants/all-projects-listing";
+import { type AllProjectListingItem, allProjectsListing } from "@/constants/all-projects-listing";
 import { portfolioGridGlass } from "@/constants/portfolio-grid-glass";
 import { cn } from "@/lib/utils";
 
@@ -27,6 +28,25 @@ const CARD_IMAGE_DEPTH_MOTION =
   "transform-gpu transition-[transform,filter] duration-1500 ease-[cubic-bezier(0.16,1,0.3,1)] will-change-transform [transform:translateY(6px)_scale(0.985)_translateZ(0)] [filter:brightness(0.94)_saturate(0.96)] group-hover:[transform:translateY(-7px)_scale(1.028)_translateZ(36px)] group-hover:[filter:brightness(1.04)_saturate(1.03)]";
 
 const STAIR_EASE = [0.16, 1, 0.3, 1] as const;
+type ProjectsFilter = "all" | "ux-design" | "design-graphique";
+
+const FILTER_LABELS: Record<ProjectsFilter, string> = {
+  all: "Tout",
+  "ux-design": "UX/UI Design",
+  "design-graphique": "Design Graphique",
+};
+
+const UX_DESIGN_ORDER = [
+  "Fiwè",
+  "MTN Selfcare",
+  "Portail national des services",
+  "Lingo +",
+  "Franchise Hub Services",
+] as const;
+
+const DESIGN_GRAPHIQUE_ORDER = ["KADÉ", "Finagriland", "SIAB", "Le Rural", "Axolus"] as const;
+
+const PROJECTS_BY_TITLE = new Map(allProjectsListing.map((item) => [item.title, item]));
 
 function AnimatedWordsLine({
   text,
@@ -177,11 +197,45 @@ function FigmaProjectCard({
   );
 }
 
-function FigmaProjectsGrid({ showDiscoverAllButton }: { showDiscoverAllButton: boolean }) {
-  const rows: (typeof allProjectsListing)[] = [];
-  for (let i = 0; i < allProjectsListing.length; i += 2) {
-    rows.push(allProjectsListing.slice(i, i + 2));
+function resolveFilteredProjects(filter: ProjectsFilter): AllProjectListingItem[] {
+  if (filter === "all") {
+    return allProjectsListing;
   }
+
+  const orderedTitles = filter === "ux-design" ? UX_DESIGN_ORDER : DESIGN_GRAPHIQUE_ORDER;
+  return orderedTitles
+    .map((title) => PROJECTS_BY_TITLE.get(title))
+    .filter((project): project is AllProjectListingItem => Boolean(project));
+}
+
+function FilterChip({
+  label,
+  isActive,
+  onClick,
+}: {
+  label: string;
+  isActive: boolean;
+  onClick: () => void;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className={cn(
+        "inline-flex h-11 items-center justify-center gap-2.5 overflow-hidden rounded-lg border px-5 text-base leading-6 tracking-[0.5px] transition-colors",
+        isActive ? "border-neutral-300 bg-neutral-300 text-neutral-800" : "border-white text-white hover:bg-white/10"
+      )}
+      aria-pressed={isActive}
+    >
+      <span className={cn("size-[5px] rounded-full", isActive ? "bg-neutral-800" : "bg-white")} aria-hidden />
+      <span>{label}</span>
+    </button>
+  );
+}
+
+function FigmaProjectsGrid({ showDiscoverAllButton }: { showDiscoverAllButton: boolean }) {
+  const [activeFilter, setActiveFilter] = useState<ProjectsFilter>("all");
+  const filteredProjects = useMemo(() => resolveFilteredProjects(activeFilter), [activeFilter]);
 
   return (
     <div className="flex flex-col gap-10">
@@ -192,17 +246,35 @@ function FigmaProjectsGrid({ showDiscoverAllButton }: { showDiscoverAllButton: b
         {showDiscoverAllButton ? <DiscoverAllButton /> : null}
       </div>
 
-      <div className="flex flex-col gap-[30px]">
-        {rows.map((pair, rowIndex) => (
-          <div
-            key={rowIndex}
-            className="flex flex-col gap-[30px] lg:flex-row lg:gap-[38px] lg:justify-between"
-          >
-            {pair.map((item) => (
-              <div key={item.title} className="min-w-0 flex-1 lg:flex lg:justify-center">
-                <FigmaProjectCard {...item} />
-              </div>
-            ))}
+      <div className="flex flex-wrap items-center gap-4 p-2">
+        <button
+          type="button"
+          className="inline-flex h-11 items-center justify-center rounded-lg bg-white px-4 text-neutral-800"
+          aria-label="Filtrer les projets"
+        >
+          <FadersHorizontalIcon size={16} weight="bold" />
+        </button>
+        <FilterChip
+          label={FILTER_LABELS.all}
+          isActive={activeFilter === "all"}
+          onClick={() => setActiveFilter("all")}
+        />
+        <FilterChip
+          label={FILTER_LABELS["ux-design"]}
+          isActive={activeFilter === "ux-design"}
+          onClick={() => setActiveFilter("ux-design")}
+        />
+        <FilterChip
+          label={FILTER_LABELS["design-graphique"]}
+          isActive={activeFilter === "design-graphique"}
+          onClick={() => setActiveFilter("design-graphique")}
+        />
+      </div>
+
+      <div className="grid grid-cols-1 gap-[30px] lg:grid-cols-2 lg:gap-x-[38px]">
+        {filteredProjects.map((item) => (
+          <div key={item.title} className="min-w-0">
+            <FigmaProjectCard {...item} />
           </div>
         ))}
       </div>
