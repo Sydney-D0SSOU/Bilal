@@ -1,8 +1,7 @@
 "use client";
 
 import type { ReactNode } from "react";
-import { Fragment, useMemo, useState } from "react";
-import { motion, useReducedMotion } from "framer-motion";
+import { useMemo, useState } from "react";
 import { FadersHorizontalIcon } from "@phosphor-icons/react";
 import Image from "next/image";
 import Link from "next/link";
@@ -13,6 +12,7 @@ import {
 } from "@/components/portfolio/glass-hover-card";
 import { type AllProjectListingItem, allProjectsListing } from "@/constants/all-projects-listing";
 import { portfolioGridGlass } from "@/constants/portfolio-grid-glass";
+import { AnimatedWordsLine } from "@/components/ui/animated-words-line";
 import { cn } from "@/lib/utils";
 
 const titleClassNameMosaic =
@@ -27,7 +27,6 @@ const CARD_GRADIENT =
 const CARD_IMAGE_DEPTH_MOTION =
   "transform-gpu transition-[transform,filter] duration-1500 ease-[cubic-bezier(0.16,1,0.3,1)] will-change-transform [transform:translateY(6px)_scale(0.985)_translateZ(0)] [filter:brightness(0.94)_saturate(0.96)] group-hover:[transform:translateY(-7px)_scale(1.028)_translateZ(36px)] group-hover:[filter:brightness(1.04)_saturate(1.03)]";
 
-const STAIR_EASE = [0.16, 1, 0.3, 1] as const;
 type ProjectsFilter = "all" | "ux-design" | "design-graphique";
 
 const FILTER_LABELS: Record<ProjectsFilter, string> = {
@@ -47,62 +46,6 @@ const UX_DESIGN_ORDER = [
 const DESIGN_GRAPHIQUE_ORDER = ["KADÉ", "Finagriland", "SIAB", "Le Rural", "Axolus"] as const;
 
 const PROJECTS_BY_TITLE = new Map(allProjectsListing.map((item) => [item.title, item]));
-
-function AnimatedWordsLine({
-  text,
-  className,
-  delay = 0,
-  prefersReducedMotion,
-}: {
-  text: string;
-  className?: string;
-  delay?: number;
-  prefersReducedMotion: boolean;
-}) {
-  const words = text.split(" ");
-
-  return (
-    <motion.span
-      className={cn("block", className)}
-      initial="hidden"
-      animate="show"
-      variants={{
-        hidden: {},
-        show: prefersReducedMotion
-          ? {}
-          : {
-              transition: {
-                delayChildren: delay,
-                staggerChildren: 0.055,
-              },
-            },
-      }}
-    >
-      {words.map((word, index) => (
-        <Fragment key={`${word}-${index}`}>
-          <motion.span
-            className="inline-block will-change-transform"
-            variants={{
-              hidden: prefersReducedMotion
-                ? { opacity: 1, y: 0 }
-                : { opacity: 0, y: 24 },
-              show: {
-                opacity: 1,
-                y: 0,
-                transition: prefersReducedMotion
-                  ? { duration: 0 }
-                  : { duration: 0.92, ease: STAIR_EASE },
-              },
-            }}
-          >
-            {word}
-          </motion.span>
-          {index < words.length - 1 ? " " : null}
-        </Fragment>
-      ))}
-    </motion.span>
-  );
-}
 
 export type PortfolioProjectsShowcaseProps = {
   titleLevel?: "h1" | "h2";
@@ -406,7 +349,6 @@ export function PortfolioProjectsShowcase({
   projectsGridVariant = "mosaic",
 }: PortfolioProjectsShowcaseProps) {
   const isFigma = projectsGridVariant === "figma";
-  const prefersReducedMotion = !!useReducedMotion();
 
   return (
     <div className={cn("flex flex-col gap-20", className)}>
@@ -418,19 +360,16 @@ export function PortfolioProjectsShowcase({
                 text="Consulter quelques"
                 className="text-neutral-300"
                 delay={0}
-                prefersReducedMotion={prefersReducedMotion}
               />
               <AnimatedWordsLine
                 text="projets sur lesquels j'ai"
                 className="text-neutral-300"
                 delay={0.22}
-                prefersReducedMotion={prefersReducedMotion}
               />
               <AnimatedWordsLine
                 text="eu à travailler récemment"
                 className="text-neutral-300"
                 delay={0.44}
-                prefersReducedMotion={prefersReducedMotion}
               />
             </ProjectsIntroTitle>
           ) : (
@@ -439,19 +378,16 @@ export function PortfolioProjectsShowcase({
                 text="Consulter quelque"
                 className="text-neutral-300"
                 delay={0}
-                prefersReducedMotion={prefersReducedMotion}
               />
               <AnimatedWordsLine
                 text="projets sur lesquels j'ai"
                 className="text-neutral-300"
                 delay={0.22}
-                prefersReducedMotion={prefersReducedMotion}
               />
               <AnimatedWordsLine
                 text="eu à travailler récemment"
                 className="text-neutral-300"
                 delay={0.44}
-                prefersReducedMotion={prefersReducedMotion}
               />
             </ProjectsIntroTitle>
           )}
@@ -462,13 +398,11 @@ export function PortfolioProjectsShowcase({
                 text="Les projets sur lesquels j'ai travaillé vont d'entreprises technologiques"
                 className="text-neutral-300"
                 delay={0.66}
-                prefersReducedMotion={prefersReducedMotion}
               />
               <AnimatedWordsLine
                 text="à des projets de commercialisation de produits et de services."
                 className="text-neutral-300"
                 delay={0.88}
-                prefersReducedMotion={prefersReducedMotion}
               />
             </p>
           ) : (
@@ -477,13 +411,11 @@ export function PortfolioProjectsShowcase({
                 text="Les projets sur lesquels j'ai travaillé vont d'entreprises technologiques"
                 className="text-neutral-300"
                 delay={0.66}
-                prefersReducedMotion={prefersReducedMotion}
               />
               <AnimatedWordsLine
                 text="à des projets de commercialisation de produits et de services."
                 className="text-neutral-300"
                 delay={0.88}
-                prefersReducedMotion={prefersReducedMotion}
               />
             </p>
           )}
