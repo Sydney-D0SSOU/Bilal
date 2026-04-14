@@ -232,7 +232,13 @@ function HeroButton({
 /* ── Hero Title ── */
 
 const titleShared =
-  "font-display font-bold text-[57px] leading-[64px] tracking-[4px] text-center whitespace-nowrap transition-colors duration-300 max-md:text-[36px] max-md:leading-[44px] max-md:tracking-[2px] max-md:whitespace-normal max-sm:text-[28px] max-sm:leading-[36px]";
+  "font-display font-bold text-[57px] leading-[64px] tracking-[4px] text-center whitespace-nowrap transition-all duration-300 max-md:text-[36px] max-md:leading-[44px] max-md:tracking-[2px] max-md:whitespace-normal max-sm:text-[28px] max-sm:leading-[36px]";
+
+const goldenGlow = {
+  textShadow: "0 0 20px rgba(255,250,235,0.35), 0 0 60px rgba(255,250,235,0.12)",
+} as const;
+
+const noGlow = { textShadow: "none" } as const;
 
 function HeroTitle() {
   const [swapped, setSwapped] = useState(false);
@@ -244,10 +250,10 @@ function HeroTitle() {
           className={cn(
             titleShared,
             swapped
-              ? "[-webkit-text-stroke:1px_#FFFAEB]"
-              : "[-webkit-text-stroke:1px_#797679]",
-            swapped ? "text-transparent" : "text-golden"
+              ? "[-webkit-text-stroke:1px_#FFFAEB] text-transparent"
+              : "[-webkit-text-stroke:1px_#797679] text-golden",
           )}
+          style={swapped ? noGlow : goldenGlow}
         >
           UX/UI DESIGNER
         </h1>
@@ -257,6 +263,7 @@ function HeroTitle() {
             "[-webkit-text-stroke:1px_#FFFAEB] cursor-pointer",
             swapped ? "text-golden" : "text-transparent"
           )}
+          style={swapped ? goldenGlow : noGlow}
           onMouseEnter={() => setSwapped(true)}
           onMouseLeave={() => setSwapped(false)}
         >
@@ -270,6 +277,10 @@ function HeroTitle() {
 /* ── Hero Image ── */
 
 function HeroImage() {
+  /* Fond #1d1b20 visible sous le masque — pas de calque couleur sur le visage (évite le voile / perte de netteté). */
+  const fadeMask =
+    "linear-gradient(to bottom, #000 0%, #000 58%, rgba(0,0,0,0.35) 78%, transparent 100%)";
+
   return (
     <div className="relative z-[1] mt-8 flex flex-col items-center max-md:mt-4">
       <div className="relative w-[543px] max-md:w-[380px] max-sm:w-[280px]">
@@ -279,35 +290,15 @@ function HeroImage() {
           width={543}
           height={586}
           className="relative z-[1] w-full h-auto object-cover pointer-events-none"
+          style={{
+            WebkitMaskImage: fadeMask,
+            maskImage: fadeMask,
+            WebkitMaskSize: "100% 100%",
+            maskSize: "100% 100%",
+            WebkitMaskRepeat: "no-repeat",
+            maskRepeat: "no-repeat",
+          }}
           priority
-        />
-        <div
-          className="absolute inset-0 z-[2] pointer-events-none"
-          style={{
-            background:
-              "radial-gradient(ellipse 70% 60% at 50% 45%, transparent 40%, var(--color-surface) 100%)",
-          }}
-        />
-        <div
-          className="absolute inset-x-0 bottom-0 h-[45%] z-[3] pointer-events-none"
-          style={{
-            background:
-              "linear-gradient(to top, var(--color-surface) 0%, var(--color-surface) 8%, transparent 100%)",
-          }}
-        />
-        <div
-          className="absolute inset-y-0 left-0 w-[30%] z-[3] pointer-events-none"
-          style={{
-            background:
-              "linear-gradient(to right, var(--color-surface) 0%, transparent 100%)",
-          }}
-        />
-        <div
-          className="absolute inset-y-0 right-0 w-[30%] z-[3] pointer-events-none"
-          style={{
-            background:
-              "linear-gradient(to left, var(--color-surface) 0%, transparent 100%)",
-          }}
         />
       </div>
     </div>
