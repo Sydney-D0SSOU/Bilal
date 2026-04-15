@@ -234,10 +234,6 @@ function HeroButton({
 const titleShared =
   "font-display font-bold text-[57px] leading-[64px] tracking-[4px] text-center whitespace-nowrap transition-all duration-300 max-md:text-[36px] max-md:leading-[44px] max-md:tracking-[2px] max-md:whitespace-normal max-sm:text-[28px] max-sm:leading-[36px]";
 
-const goldenGlow = {
-  textShadow: "0 0 20px rgba(255,250,235,0.35), 0 0 60px rgba(255,250,235,0.12)",
-} as const;
-
 const noGlow = { textShadow: "none" } as const;
 
 function HeroTitle() {
@@ -253,7 +249,7 @@ function HeroTitle() {
               ? "[-webkit-text-stroke:1px_#FFFAEB] text-transparent"
               : "[-webkit-text-stroke:1px_#797679] text-golden",
           )}
-          style={swapped ? noGlow : goldenGlow}
+          style={noGlow}
         >
           UX/UI DESIGNER
         </h1>
@@ -263,7 +259,7 @@ function HeroTitle() {
             "[-webkit-text-stroke:1px_#FFFAEB] cursor-pointer",
             swapped ? "text-golden" : "text-transparent"
           )}
-          style={swapped ? goldenGlow : noGlow}
+          style={noGlow}
           onMouseEnter={() => setSwapped(true)}
           onMouseLeave={() => setSwapped(false)}
         >
