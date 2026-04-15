@@ -83,11 +83,13 @@ export function SolidRadialCtaLink({
   children,
   trailingIcon,
   className,
+  onClick,
 }: {
   href: string;
   children: ReactNode;
   trailingIcon?: ReactNode;
   className?: string;
+  onClick?: () => void;
 }) {
   const { ref, hovered, origin, handleMouseEnter, handleMouseLeave } =
     useRadialHover<HTMLAnchorElement>();
@@ -102,6 +104,7 @@ export function SolidRadialCtaLink({
         "relative inline-flex h-11 items-center justify-center overflow-hidden rounded-lg border border-neutral-200/60 bg-neutral-200 px-5 text-base tracking-[0.5px] whitespace-nowrap transition-transform duration-300 ease-in-out hover:-translate-y-0.5",
         className
       )}
+      onClick={onClick}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >

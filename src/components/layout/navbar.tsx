@@ -134,7 +134,7 @@ export function Navbar() {
                 <Link
                   href={item.href}
                   className={cn(
-                    "flex h-11 items-center justify-center px-5 text-base tracking-[0.5px] whitespace-nowrap transition-all duration-300 ease-out hover:-translate-y-0.5 hover:text-[#FDEEC8]",
+                    "flex h-11 items-center justify-center px-5 text-[24px] leading-8 font-normal tracking-normal whitespace-nowrap transition-all duration-300 ease-out hover:-translate-y-0.5 hover:text-[#FDEEC8]",
                     isActive ? "text-[#FDEEC8]" : "text-white"
                   )}
                 >
@@ -238,7 +238,7 @@ export function Navbar() {
                         >
                           <span
                             className={cn(
-                              "text-[24px] leading-8 text-white",
+                              "text-[24px] leading-8 font-normal tracking-normal text-white",
                               isActive && "text-[#FDEEC8]"
                             )}
                           >
@@ -272,7 +272,11 @@ export function Navbar() {
                   exit={prefersReducedMotion ? undefined : { opacity: 0, y: 24 }}
                   transition={{ duration: 0.4, delay: prefersReducedMotion ? 0 : 0.28 }}
                 >
-                  <SolidRadialCtaLink href={ctaNavItem.href} className="min-w-[113px]">
+                  <SolidRadialCtaLink
+                    href={ctaNavItem.href}
+                    className="min-w-[113px]"
+                    onClick={() => setMobileOpen(false)}
+                  >
                     {ctaNavItem.label}
                   </SolidRadialCtaLink>
                 </motion.div>

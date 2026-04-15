@@ -68,36 +68,37 @@ export function Footer() {
 
   return (
     <footer
-      className="flex flex-col gap-10 px-6 py-16 md:px-[90px] md:py-20"
+      className="flex flex-col gap-10 px-5 py-20 md:px-[90px] md:py-20"
       style={{
         backgroundImage: "linear-gradient(140deg, #525250 0%, #131313 64%)",
       }}
     >
       {/* ── Heading + CTA ── */}
-      <div className="flex flex-col gap-6 p-5">
-        <h2 className="font-display text-[clamp(2rem,4vw,2.8125rem)] font-semibold leading-[1.15] tracking-[4px] text-white">
+      <div className="flex flex-col gap-6 px-0 md:p-5">
+        <h2 className="max-w-[220px] font-display text-[40px] font-semibold leading-[1.15] tracking-[1.6px] text-white md:max-w-none md:text-[clamp(2rem,4vw,2.8125rem)] md:tracking-[4px]">
           Parlons de votre projet
         </h2>
 
-        <div className="flex flex-wrap items-center gap-6">
+        <div className="flex flex-col items-start gap-6 md:flex-row md:flex-wrap md:items-center">
           <OutlineBurstCtaLink
             href="/contact"
+            className="w-fit"
             trailingIcon={<ArrowSquareOutIcon className="size-5 shrink-0" />}
           >
             Remplir le formulaire
           </OutlineBurstCtaLink>
 
-          <div className="flex flex-wrap items-center gap-2.5">
-            <span className="text-lg leading-9 text-white md:text-[28px]">
+          <div className="flex flex-col items-start gap-[10px] md:flex-wrap md:items-center md:gap-2.5">
+            <span className="text-[28px] leading-9 text-white">
               or copy an email:
             </span>
             <div className="relative">
               <button
                 type="button"
                 onClick={handleCopyEmail}
-                className="group flex items-center gap-2 rounded-md p-2 transition-colors hover:bg-white/5"
+                className="group flex items-center gap-2 rounded-md px-0 py-2 transition-colors hover:bg-white/5 md:p-2"
               >
-                <span className="text-lg leading-9 text-neutral-300 underline md:text-[28px]">
+                <span className="text-[14px] leading-5 tracking-[0.25px] text-neutral-300 underline md:text-[28px] md:leading-9 md:tracking-normal">
                   {contactEmail}
                 </span>
                 <CopyIcon className="size-5 shrink-0 text-neutral-300 transition-colors group-hover:text-white" />
@@ -122,13 +123,13 @@ export function Footer() {
       </div>
 
       {/* ── Navigation columns ── */}
-      <nav className="flex gap-10">
+      <nav className="flex flex-row gap-10">
         <ul className="flex flex-col gap-[25px]">
           {navigationItems.map((item) => (
             <li key={item.href}>
               <Link
                 href={item.href}
-                className="flex h-11 min-w-[111px] items-center justify-start px-5 text-base tracking-[0.5px] text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:text-[#FDEEC8]"
+                className="flex h-11 min-w-[111px] items-center justify-start px-0 text-base tracking-[0.5px] text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:text-[#FDEEC8] md:px-5"
               >
                 {item.label}
               </Link>
@@ -142,7 +143,7 @@ export function Footer() {
               <Link
                 href={item.href}
                 onClick={item.href === "/contact#faq" ? handleFaqClick : undefined}
-                className="flex h-11 min-w-[111px] items-center justify-start px-5 text-base tracking-[0.5px] text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:text-[#FDEEC8]"
+                className="flex h-11 min-w-[111px] items-center justify-start px-0 text-base tracking-[0.5px] text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:text-[#FDEEC8] md:px-5"
               >
                 {item.label}
               </Link>
@@ -152,25 +153,14 @@ export function Footer() {
       </nav>
 
       {/* ── Bottom bar ── */}
-      <div className="flex flex-col gap-10 px-5">
+      <div className="flex flex-col gap-10 px-0 md:px-5">
         <hr className="border-neutral-400/30" />
 
-        <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
-          <div className="flex items-center gap-[9px]">
-            <span className="flex size-[25px] shrink-0 items-center justify-center rounded-full border-2 border-white">
-              <span className="font-(--font-poppins) text-[22px] leading-7 text-white">
-                C
-              </span>
-            </span>
-            <span className="text-base tracking-[0.5px] text-white md:text-xl">
-              2025 Conçu par {siteConfig.name}
-            </span>
-          </div>
-
-          <div className="flex flex-wrap items-center gap-[18px]">
+        <div className="flex flex-col gap-[18px] md:flex-row md:items-center md:justify-between md:gap-6">
+          <div className="order-1 flex flex-col items-start gap-[18px] md:order-2 md:flex-wrap md:items-center">
             <a
               href={`mailto:${personalEmail}`}
-              className="text-base leading-8 text-neutral-300 transition-colors hover:text-white md:text-xl"
+              className="text-[20px] leading-8 text-neutral-300 transition-colors hover:text-white md:text-xl"
             >
               {personalEmail}
             </a>
@@ -191,6 +181,17 @@ export function Footer() {
                 );
               })}
             </div>
+          </div>
+
+          <div className="order-2 flex items-center gap-[9px] md:order-1">
+            <span className="flex size-[25px] shrink-0 items-center justify-center rounded-full border-2 border-white">
+              <span className="font-(--font-poppins) text-[22px] leading-7 text-white">
+                C
+              </span>
+            </span>
+            <span className="whitespace-nowrap text-base tracking-[0.5px] text-white md:text-xl">
+              2025 Conçu par {siteConfig.name}
+            </span>
           </div>
         </div>
       </div>

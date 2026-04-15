@@ -16,10 +16,10 @@ import { AnimatedWordsLine } from "@/components/ui/animated-words-line";
 import { cn } from "@/lib/utils";
 
 const titleClassNameMosaic =
-  "font-display text-[clamp(2.5rem,5vw,3.5625rem)] font-bold leading-[1.12] tracking-[4px]";
+  "font-display text-[clamp(2.5rem,5vw,3.5625rem)] font-bold leading-[1.12] tracking-[4px] max-md:uppercase";
 
 const titleClassNameFigma =
-  "font-display max-w-[1072px] text-[clamp(2rem,6vw,3.56rem)] font-bold leading-[1.12] tracking-[4px]";
+  "font-display max-w-[1072px] text-[clamp(2rem,6vw,3.56rem)] font-bold leading-[1.12] tracking-[4px] max-md:uppercase";
 
 const CARD_GRADIENT =
   "linear-gradient(125.81deg, rgb(82, 82, 80) 0%, rgb(19, 19, 19) 63.8%)";
@@ -164,7 +164,7 @@ function FilterChip({
       type="button"
       onClick={onClick}
       className={cn(
-        "inline-flex h-11 items-center justify-center gap-2.5 overflow-hidden rounded-lg border px-5 text-base leading-6 tracking-[0.5px] transition-colors",
+        "inline-flex h-11 shrink-0 items-center justify-center gap-2.5 overflow-hidden rounded-lg border px-4 sm:px-5 text-sm sm:text-base leading-6 tracking-[0.5px] whitespace-nowrap transition-colors",
         isActive ? "border-neutral-300 bg-neutral-300 text-neutral-800" : "border-white text-white hover:bg-white/10"
       )}
       aria-pressed={isActive}
@@ -188,10 +188,10 @@ function FigmaProjectsGrid({ showDiscoverAllButton }: { showDiscoverAllButton: b
         {showDiscoverAllButton ? <DiscoverAllButton /> : null}
       </div>
 
-      <div className="flex flex-wrap items-center gap-4 p-2">
+      <div className="flex items-center gap-3 overflow-x-auto p-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
         <button
           type="button"
-          className="inline-flex h-11 items-center justify-center rounded-lg bg-white px-4 text-neutral-800"
+          className="inline-flex h-11 shrink-0 items-center justify-center rounded-lg bg-white px-4 text-neutral-800"
           aria-label="Filtrer les projets"
         >
           <FadersHorizontalIcon size={16} weight="bold" />
@@ -366,16 +366,33 @@ export function PortfolioProjectsShowcase({
                 className="text-neutral-300"
                 delay={0.22}
               />
-              <AnimatedWordsLine
-                text="eu à travailler récemment"
-                className="text-neutral-300"
-                delay={0.44}
-              />
+              <span className="block">
+                <AnimatedWordsLine
+                  text="eu à"
+                  className="text-neutral-300"
+                  delay={0.44}
+                  containerDisplay="inline"
+                />
+                {" "}
+                <AnimatedWordsLine
+                  text="travailler"
+                  className="text-white"
+                  delay={0.56}
+                  containerDisplay="inline"
+                />
+                {" "}
+                <AnimatedWordsLine
+                  text="récemment"
+                  className="text-neutral-300"
+                  delay={0.68}
+                  containerDisplay="inline"
+                />
+              </span>
             </ProjectsIntroTitle>
           ) : (
             <ProjectsIntroTitle level={titleLevel} className={titleClassNameMosaic}>
               <AnimatedWordsLine
-                text="Consulter quelque"
+                text="Consulter quelques"
                 className="text-neutral-300"
                 delay={0}
               />
@@ -384,39 +401,102 @@ export function PortfolioProjectsShowcase({
                 className="text-neutral-300"
                 delay={0.22}
               />
-              <AnimatedWordsLine
-                text="eu à travailler récemment"
-                className="text-neutral-300"
-                delay={0.44}
-              />
+              <span className="block">
+                <AnimatedWordsLine
+                  text="eu à"
+                  className="text-neutral-300"
+                  delay={0.44}
+                  containerDisplay="inline"
+                />
+                {" "}
+                <AnimatedWordsLine
+                  text="travailler"
+                  className="text-white"
+                  delay={0.56}
+                  containerDisplay="inline"
+                />
+                {" "}
+                <AnimatedWordsLine
+                  text="récemment"
+                  className="text-neutral-300"
+                  delay={0.68}
+                  containerDisplay="inline"
+                />
+              </span>
             </ProjectsIntroTitle>
           )}
 
           {isFigma ? (
-            <p className="max-w-[900px] text-2xl leading-8">
-              <AnimatedWordsLine
-                text="Les projets sur lesquels j'ai travaillé vont d'entreprises technologiques"
-                className="text-neutral-300"
-                delay={0.66}
-              />
-              <AnimatedWordsLine
-                text="à des projets de commercialisation de produits et de services."
-                className="text-neutral-300"
-                delay={0.88}
-              />
+            <p
+              className="max-w-[900px] text-2xl font-normal leading-8 tracking-[0px]"
+              style={{ fontFamily: '"SF Pro Display", var(--font-sans), sans-serif' }}
+            >
+              <span className="block">
+                <AnimatedWordsLine
+                  text="Les projets sur lesquels j'ai travaillé vont d'entreprises"
+                  className="text-neutral-300"
+                  delay={0.66}
+                  containerDisplay="inline"
+                />
+                {" "}
+                <AnimatedWordsLine
+                  text="technologiques"
+                  className="text-white"
+                  delay={0.8}
+                  containerDisplay="inline"
+                />
+              </span>
+              <span className="block">
+                <AnimatedWordsLine
+                  text="à des projets de"
+                  className="text-neutral-300"
+                  delay={0.88}
+                  containerDisplay="inline"
+                />
+                {" "}
+                <AnimatedWordsLine
+                  text=" commercialisation de produits et de services."
+                  className="text-white"
+                  delay={1.02}
+                  containerDisplay="inline"
+                />
+              </span>
             </p>
           ) : (
-            <p className="max-w-2xl text-2xl leading-8 text-neutral-300">
-              <AnimatedWordsLine
-                text="Les projets sur lesquels j'ai travaillé vont d'entreprises technologiques"
-                className="text-neutral-300"
-                delay={0.66}
-              />
-              <AnimatedWordsLine
-                text="à des projets de commercialisation de produits et de services."
-                className="text-neutral-300"
-                delay={0.88}
-              />
+            <p
+              className="max-w-2xl text-2xl font-normal leading-8 tracking-[0px] text-neutral-300"
+              style={{ fontFamily: '"SF Pro Display", var(--font-sans), sans-serif' }}
+            >
+              <span className="block">
+                <AnimatedWordsLine
+                  text="Les projets sur lesquels j'ai travaillé vont d'entreprises"
+                  className="text-neutral-300"
+                  delay={0.66}
+                  containerDisplay="inline"
+                />
+                {" "}
+                <AnimatedWordsLine
+                  text="technologiques"
+                  className="text-white"
+                  delay={0.8}
+                  containerDisplay="inline"
+                />
+              </span>
+              <span className="block">
+                <AnimatedWordsLine
+                  text="à des projets de commercialisation de"
+                  className="text-neutral-300"
+                  delay={0.88}
+                  containerDisplay="inline"
+                />
+                {" "}
+                <AnimatedWordsLine
+                  text="produits et de services."
+                  className="text-white"
+                  delay={1.02}
+                  containerDisplay="inline"
+                />
+              </span>
             </p>
           )}
         </div>
