@@ -68,15 +68,19 @@ export function Footer() {
 
   return (
     <footer
-      className="flex flex-col gap-10 px-5 py-20 md:px-[90px] md:py-20"
+      className="flex flex-col gap-10 px-5 py-10 md:px-[90px] md:py-20"
       style={{
         backgroundImage: "linear-gradient(140deg, #525250 0%, #131313 64%)",
       }}
     >
       {/* ── Heading + CTA ── */}
-      <div className="flex flex-col gap-6 px-0 md:p-5">
-        <h2 className="max-w-[220px] font-display text-[40px] font-semibold leading-[1.15] tracking-[1.6px] text-white md:max-w-none md:text-[clamp(2rem,4vw,2.8125rem)] md:tracking-[4px]">
-          Parlons de votre projet
+      <div className="flex flex-col gap-6 md:p-5">
+        <h2 className="font-display text-[40px] font-semibold leading-[1.15] tracking-[1.6px] text-white md:text-[clamp(2rem,4vw,2.8125rem)] md:tracking-[4px]">
+          Parlons
+          <br className="md:hidden" />
+          {" "}de votre
+          <br className="md:hidden" />
+          {" "}projet
         </h2>
 
         <div className="flex flex-col items-start gap-6 md:flex-row md:flex-wrap md:items-center">
@@ -88,7 +92,7 @@ export function Footer() {
             Remplir le formulaire
           </OutlineBurstCtaLink>
 
-          <div className="flex flex-col items-start gap-[10px] md:flex-wrap md:items-center md:gap-2.5">
+          <div className="flex flex-col items-start gap-[10px] md:flex-row md:flex-wrap md:items-center md:gap-2.5">
             <span className="text-[28px] leading-9 text-white">
               or copy an email:
             </span>
@@ -115,7 +119,7 @@ export function Footer() {
                     : "border-amber-200/40 bg-amber-200/10 text-amber-100"
                 }`}
               >
-                {copyState === "success" ? "Email copie" : copyState === "error" ? "Copie impossible" : ""}
+                {copyState === "success" ? "Email copié" : copyState === "error" ? "Copie impossible" : ""}
               </span>
             </div>
           </div>
@@ -129,7 +133,7 @@ export function Footer() {
             <li key={item.href}>
               <Link
                 href={item.href}
-                className="flex h-11 min-w-[111px] items-center justify-start px-0 text-base tracking-[0.5px] text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:text-[#FDEEC8] md:px-5"
+                className="flex h-11 min-w-[94px] items-center justify-start px-0 text-base tracking-[0.5px] text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:text-[#FDEEC8] md:min-w-[111px] md:px-5"
               >
                 {item.label}
               </Link>
@@ -143,7 +147,7 @@ export function Footer() {
               <Link
                 href={item.href}
                 onClick={item.href === "/contact#faq" ? handleFaqClick : undefined}
-                className="flex h-11 min-w-[111px] items-center justify-start px-0 text-base tracking-[0.5px] text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:text-[#FDEEC8] md:px-5"
+                className="flex h-11 min-w-[87px] items-center justify-start px-0 text-base tracking-[0.5px] text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:text-[#FDEEC8] md:min-w-[111px] md:px-5"
               >
                 {item.label}
               </Link>
@@ -153,14 +157,15 @@ export function Footer() {
       </nav>
 
       {/* ── Bottom bar ── */}
-      <div className="flex flex-col gap-10 px-0 md:px-5">
+      <div className="flex flex-col gap-10 md:px-5">
         <hr className="border-neutral-400/30" />
 
         <div className="flex flex-col gap-[18px] md:flex-row md:items-center md:justify-between md:gap-6">
-          <div className="order-1 flex flex-col items-start gap-[18px] md:order-2 md:flex-wrap md:items-center">
+          {/* email + socials — mobile: premier, desktop: à droite */}
+          <div className="order-1 flex flex-col items-start gap-[18px] md:order-2 md:flex-row md:flex-wrap md:items-center md:gap-[18px]">
             <a
               href={`mailto:${personalEmail}`}
-              className="text-[20px] leading-8 text-neutral-300 transition-colors hover:text-white md:text-xl"
+              className="text-[20px] leading-8 text-neutral-300 transition-colors hover:text-white"
             >
               {personalEmail}
             </a>
@@ -183,13 +188,10 @@ export function Footer() {
             </div>
           </div>
 
-          <div className="order-2 flex items-center gap-[9px] md:order-1">
-            <span className="flex size-[25px] shrink-0 items-center justify-center rounded-full border-2 border-white">
-              <span className="font-(--font-poppins) text-[22px] leading-7 text-white">
-                C
-              </span>
-            </span>
-            <span className="whitespace-nowrap text-base tracking-[0.5px] text-white md:text-xl">
+          {/* copyright — mobile: second, desktop: à gauche */}
+          <div className="order-2 flex items-center gap-[9px] pl-2 md:order-1 md:pl-0">
+            <span className="size-8 shrink-0 text-center text-[32px] leading-none text-white">©</span>
+            <span className="whitespace-nowrap text-[20px] tracking-[0.5px] text-white">
               2025 Conçu par {siteConfig.name}
             </span>
           </div>

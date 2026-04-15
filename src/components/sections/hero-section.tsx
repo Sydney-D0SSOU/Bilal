@@ -277,19 +277,28 @@ function HeroTitle() {
 /* ── Hero Image ── */
 
 function HeroImage() {
-  /* Fond #1d1b20 visible sous le masque — pas de calque couleur sur le visage (évite le voile / perte de netteté). */
+  /* Le fondu commence très bas pour garder le visage et le haut du buste parfaitement nets. */
   const fadeMask =
-    "linear-gradient(to bottom, #000 0%, #000 58%, rgba(0,0,0,0.35) 78%, transparent 100%)";
+    "linear-gradient(to bottom, #000 0%, #000 72%, rgba(0,0,0,0.92) 84%, rgba(0,0,0,0.38) 93%, transparent 100%)";
 
   return (
-    <div className="relative z-[1] mt-8 flex flex-col items-center max-md:mt-4">
+    <div className="relative z-1 mt-8 flex flex-col items-center max-md:mt-4">
       <div className="relative w-[543px] max-md:w-[380px] max-sm:w-[280px]">
+        <div
+          className="pointer-events-none absolute inset-x-[10%] bottom-[2%] z-0 h-[18%] rounded-[999px] blur-2xl"
+          style={{
+            background:
+              "radial-gradient(ellipse at center, rgba(255,250,235,0.12) 0%, rgba(29,27,32,0.04) 55%, transparent 100%)",
+          }}
+        />
         <Image
           src="/profile.png"
           alt="Bilal MAOUDE"
           width={543}
           height={586}
-          className="relative z-[1] w-full h-auto object-cover pointer-events-none"
+          className="relative z-1 h-auto w-full object-cover pointer-events-none"
+          quality={100}
+          sizes="(max-width: 640px) 280px, (max-width: 768px) 380px, 543px"
           style={{
             WebkitMaskImage: fadeMask,
             maskImage: fadeMask,

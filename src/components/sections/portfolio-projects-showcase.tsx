@@ -375,18 +375,13 @@ export function PortfolioProjectsShowcase({
                 />
                 {" "}
                 <AnimatedWordsLine
-                  text="travailler"
+                  text="travailler récemment"
                   className="text-white"
                   delay={0.56}
                   containerDisplay="inline"
                 />
                 {" "}
-                <AnimatedWordsLine
-                  text="récemment"
-                  className="text-neutral-300"
-                  delay={0.68}
-                  containerDisplay="inline"
-                />
+                
               </span>
             </ProjectsIntroTitle>
           ) : (

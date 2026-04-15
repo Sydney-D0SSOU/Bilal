@@ -68,18 +68,18 @@ export default function AProposPage() {
           <AProposIntro />
 
           {/* Work Process */}
-          <div className="flex flex-wrap items-start justify-between gap-10">
-            <div className="font-display max-w-[200px] text-2xl leading-[44px] tracking-[4px] text-neutral-400">
+          <div className="flex flex-col gap-10 lg:flex-row lg:items-start lg:justify-between">
+            <div className="font-display text-2xl leading-[44px] tracking-[4px] text-neutral-400 lg:max-w-[200px]">
               <p>Mon procès</p>
               <p>de travail</p>
             </div>
-            <div className="flex flex-wrap gap-10">
+            <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:flex lg:flex-wrap">
               {processSteps.map((step) => {
                 const Icon = step.icon;
                 return (
                   <div
                     key={step.title}
-                    className="flex w-[282px] flex-col items-start rounded-2xl bg-neutral-700/50 p-8 backdrop-blur-[114px]"
+                    className="flex w-full flex-col items-start rounded-2xl bg-neutral-700/50 p-8 backdrop-blur-[114px] lg:w-[282px]"
                   >
                     <Icon className="mb-4 size-[79px] text-white/90" />
                     <h3 className="mb-2 text-xl font-semibold leading-7 text-white">
