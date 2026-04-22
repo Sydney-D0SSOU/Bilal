@@ -134,7 +134,7 @@ export function Navbar() {
                 <Link
                   href={item.href}
                   className={cn(
-                    "flex h-11 items-center justify-center px-5 text-[24px] leading-8 font-normal tracking-normal whitespace-nowrap transition-all duration-300 ease-out hover:-translate-y-0.5 hover:text-[#FDEEC8]",
+                    "flex h-11 items-center justify-center px-5 text-base leading-6 font-normal tracking-[0.5px] whitespace-nowrap transition-all duration-300 ease-out hover:-translate-y-0.5 hover:text-[#FDEEC8]",
                     isActive ? "text-[#FDEEC8]" : "text-white"
                   )}
                 >
