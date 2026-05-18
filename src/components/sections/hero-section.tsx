@@ -273,26 +273,17 @@ function HeroTitle() {
 /* ── Hero Image ── */
 
 function HeroImage() {
-  /* Le fondu commence très bas pour garder le visage et le haut du buste parfaitement nets. */
   const fadeMask =
-    "linear-gradient(to bottom, #000 0%, #000 72%, rgba(0,0,0,0.92) 84%, rgba(0,0,0,0.38) 93%, transparent 100%)";
+    "linear-gradient(to bottom, #000 0%, #000 72%, rgba(0,0,0,0.85) 82%, rgba(0,0,0,0.4) 92%, transparent 100%)";
 
   return (
     <div className="relative z-1 mt-8 flex flex-col items-center max-md:mt-4">
-      <div className="relative w-[543px] max-md:w-[380px] max-sm:w-[280px]">
-        <div
-          className="pointer-events-none absolute inset-x-[10%] bottom-[2%] z-0 h-[18%] rounded-[999px] blur-2xl"
-          style={{
-            background:
-              "radial-gradient(ellipse at center, rgba(255,250,235,0.12) 0%, rgba(29,27,32,0.04) 55%, transparent 100%)",
-          }}
-        />
+      <div className="relative h-[586px] w-[543px] max-md:h-[410px] max-md:w-[380px] max-sm:h-[302px] max-sm:w-[280px]">
         <Image
-          src="/profile.png"
+          src="/new_profile.png"
           alt="Bilal MAOUDE"
-          width={543}
-          height={586}
-          className="relative z-1 h-auto w-full object-cover pointer-events-none"
+          fill
+          className="pointer-events-none object-cover object-center"
           quality={100}
           sizes="(max-width: 640px) 280px, (max-width: 768px) 380px, 543px"
           style={{
@@ -305,6 +296,8 @@ function HeroImage() {
           }}
           priority
         />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[22%] bg-linear-to-t from-surface to-transparent" />
+        <div className="pointer-events-none absolute inset-x-1/2 -bottom-px h-[70px] w-[125%] -translate-x-1/2 rounded-[120px] bg-surface blur-md max-md:h-[50px] max-sm:h-[36px]" />
       </div>
     </div>
   );
