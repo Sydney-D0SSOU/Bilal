@@ -70,7 +70,7 @@ export default function AProposPage() {
           {/* Work Process */}
           <div className="flex flex-col gap-10 lg:flex-row lg:items-start lg:justify-between">
             <div className="font-display text-2xl leading-[44px] tracking-[4px] text-neutral-400 lg:max-w-[200px]">
-              <p>Mon procès</p>
+              <p>Mon processus</p>
               <p>de travail</p>
             </div>
             <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:flex lg:flex-wrap">

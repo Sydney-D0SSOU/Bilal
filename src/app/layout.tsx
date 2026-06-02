@@ -20,6 +20,11 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   title: siteConfig.title,
   description: siteConfig.description,
+  icons: {
+    icon: "/new_profile.png",
+    shortcut: "/new_profile.png",
+    apple: "/new_profile.png",
+  },
 };
 
 export default function RootLayout({

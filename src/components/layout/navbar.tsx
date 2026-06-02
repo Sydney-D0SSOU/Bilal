@@ -266,7 +266,7 @@ export function Navbar() {
                 </motion.ul>
 
                 <motion.div
-                  className="mt-auto flex justify-center"
+                  className="mt-16 flex justify-center pb-16"
                   initial={prefersReducedMotion ? false : { opacity: 0, y: 24 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={prefersReducedMotion ? undefined : { opacity: 0, y: 24 }}

@@ -38,6 +38,7 @@ const footerNavCol2 = [
 
 export function Footer() {
   const [copyState, setCopyState] = useState<"idle" | "success" | "error">("idle");
+  const currentYear = new Date().getFullYear();
 
   useEffect(() => {
     if (copyState === "idle") return;
@@ -189,10 +190,10 @@ export function Footer() {
           </div>
 
           {/* copyright — mobile: second, desktop: à gauche */}
-          <div className="order-2 flex items-center gap-[9px] pl-2 md:order-1 md:pl-0">
+          <div className="order-2 flex items-start gap-[9px] pl-2 md:order-1 md:items-center md:pl-0">
             <span className="size-8 shrink-0 text-center text-[32px] leading-none text-white">©</span>
-            <span className="whitespace-nowrap text-[20px] tracking-[0.5px] text-white">
-              2025 Conçu par {siteConfig.name}
+            <span className="max-w-[calc(100vw-90px)] wrap-break-word text-[20px] leading-7 tracking-[0.5px] text-white md:max-w-none md:whitespace-nowrap">
+              {currentYear} Conçu par {siteConfig.name}
             </span>
           </div>
         </div>
