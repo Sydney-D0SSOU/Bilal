@@ -6,7 +6,7 @@ export interface NavItem {
 export const navigationItems: NavItem[] = [
   { label: "Accueil", href: "/" },
   { label: "Projet", href: "/all-projects" },
-  { label: "À propos", href: "/a-propos" },
+  { label: "À propos", href: "/about" },
 ];
 
 export const ctaNavItem: NavItem = {

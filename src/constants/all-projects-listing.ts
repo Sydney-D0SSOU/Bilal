@@ -19,7 +19,7 @@ export const allProjectsListing: AllProjectListingItem[] = [
   {
     title: "Fiwè",
     meta: "2026 - Refonte du site",
-    href: "/projets/fiwe",
+    href: "/projects/fiwe",
     image: "/projects/listing/fiwe.png",
     imageFit: "contain",
     imagePosition: "center bottom",
@@ -29,7 +29,7 @@ export const allProjectsListing: AllProjectListingItem[] = [
   {
     title: "MTN Selfcare",
     meta: "2023 - Tableau de bord",
-    href: "/projets/mtn-selfcare",
+    href: "/projects/mtn-selfcare",
     image: "/projects/listing/mtn-selfcare.png",
     imageFit: "cover-bottom",
     categories: ["ux"],
@@ -37,7 +37,7 @@ export const allProjectsListing: AllProjectListingItem[] = [
   {
     title: "Franchise Hub Services",
     meta: "2026 - Tableau de bord",
-    href: "/projets/franchise-hub-services",
+    href: "/projects/franchise-hub-services",
     image: "/projects/listing/franchise-hub.png",
     imageFit: "cover-bottom",
     categories: ["ux"],
@@ -45,7 +45,7 @@ export const allProjectsListing: AllProjectListingItem[] = [
   {
     title: "Axolus",
     meta: "2026 - Identité de marque",
-    href: "/projets/axolus",
+    href: "/projects/axolus",
     image: "/projects/listing/axolus.png",
     imageFit: "cover-bottom",
     categories: ["design-graphique"],
@@ -53,7 +53,7 @@ export const allProjectsListing: AllProjectListingItem[] = [
   {
     title: "Portail national des services",
     meta: "2025 - Refonte du site",
-    href: "/projets/portail-national-services",
+    href: "/projects/portail-national-services",
     image: "/projects/listing/pns.png",
     imageFit: "cover-bottom",
     categories: ["ux"],
@@ -61,7 +61,7 @@ export const allProjectsListing: AllProjectListingItem[] = [
   {
     title: "Lingo +",
     meta: "2024 - Plateforme mobile",
-    href: "/projets/lingo",
+    href: "/projects/lingo",
     image: "/projects/listing/lingo.png",
     imageFit: "cover-bottom",
     categories: ["ux"],
@@ -69,7 +69,7 @@ export const allProjectsListing: AllProjectListingItem[] = [
   {
     title: "KADÉ",
     meta: "2025 - Logo Design",
-    href: "/projets/kade",
+    href: "/projects/kade",
     image: "/projects/listing/kade.png",
     imageFit: "cover-center",
     categories: ["design-graphique"],
@@ -77,7 +77,7 @@ export const allProjectsListing: AllProjectListingItem[] = [
   {
     title: "Finagriland",
     meta: "2025 - Logo Design",
-    href: "/projets/finagriland",
+    href: "/projects/finagriland",
     image: "/projects/listing/finagriland.png",
     imageFit: "cover-center",
     categories: ["design-graphique"],
@@ -85,7 +85,7 @@ export const allProjectsListing: AllProjectListingItem[] = [
   {
     title: "SIAB",
     meta: "2022 - Visuel",
-    href: "/projets/siab",
+    href: "/projects/siab",
     image: "/projects/listing/siab.png",
     imageFit: "contain",
     cardBackground: "#ffffff",
@@ -95,7 +95,7 @@ export const allProjectsListing: AllProjectListingItem[] = [
   {
     title: "Le Rural",
     meta: "2024 - Visuel",
-    href: "/projets/le-rural",
+    href: "/projects/le-rural",
     image: "/projects/listing/le-rural.png",
     imageFit: "cover-center",
     categories: ["design-graphique"],

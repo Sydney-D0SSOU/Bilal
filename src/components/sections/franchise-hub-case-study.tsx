@@ -316,7 +316,7 @@ export function FranchiseHubCaseStudy({
           </h3>
           <div className="flex flex-col gap-12 lg:flex-row lg:justify-between lg:gap-10">
             <GlassHoverCardLink
-              href="/projets/portail-national-services"
+              href="/projects/portail-national-services"
               {...franchiseHubAutresProjetsGlass.pns}
               className="relative block h-[min(471px,70vw)] w-full max-w-[604px] overflow-hidden rounded-2xl"
               style={{
@@ -332,7 +332,7 @@ export function FranchiseHubCaseStudy({
               />
             </GlassHoverCardLink>
             <GlassHoverCardLink
-              href="/projets/lingo"
+              href="/projects/lingo"
               {...franchiseHubAutresProjetsGlass.lingo}
               className="relative block h-[min(471px,70vw)] w-full max-w-[604px] overflow-hidden rounded-2xl"
               style={{

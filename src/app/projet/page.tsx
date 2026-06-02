@@ -1,13 +1,5 @@
-import { Footer } from "@/components/layout/footer";
-import { PortfolioShowcase } from "@/components/sections/portfolio-showcase";
+import { redirect } from "next/navigation";
 
-export default function ProjetPage() {
-  return (
-    <>
-      <main className="flex-1">
-        <PortfolioShowcase />
-      </main>
-      <Footer />
-    </>
-  );
+export default function ProjetRedirectPage() {
+  redirect("/projects");
 }

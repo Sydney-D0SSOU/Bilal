@@ -312,7 +312,7 @@ export function LingoCaseStudy({
           </h3>
           <div className="flex flex-col gap-12 lg:flex-row lg:justify-between lg:gap-10">
             <GlassHoverCardLink
-              href="/projets/fiwe"
+              href="/projects/fiwe"
               {...lingoAutresProjetsGlass.fiwe}
               className="relative block h-[min(471px,70vw)] w-full max-w-[604px] overflow-hidden rounded-2xl"
               style={{
@@ -328,7 +328,7 @@ export function LingoCaseStudy({
               />
             </GlassHoverCardLink>
             <GlassHoverCardLink
-              href="/projets/mtn-selfcare"
+              href="/projects/mtn-selfcare"
               {...lingoAutresProjetsGlass.mtn}
               className="relative block h-[min(471px,70vw)] w-full max-w-[604px] overflow-hidden rounded-2xl"
               style={{

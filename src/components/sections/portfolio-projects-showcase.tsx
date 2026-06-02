@@ -236,7 +236,7 @@ function MosaicProjectsGrid() {
 
       <div className="grid grid-cols-1 gap-10 lg:grid-cols-[711fr_498fr]">
         <GlassHoverCardLink
-          href="/projets/fiwe"
+          href="/projects/fiwe"
           {...portfolioGridGlass.fiweLaptopRocks}
           className="relative aspect-square overflow-hidden rounded-2xl"
           style={{ backgroundImage: "linear-gradient(119deg, #525250 0%, #131313 64%)" }}
@@ -252,7 +252,7 @@ function MosaicProjectsGrid() {
           </div>
         </GlassHoverCardLink>
         <GlassHoverCardLink
-          href="/projets/mtn-selfcare"
+          href="/projects/mtn-selfcare"
           {...portfolioGridGlass.fiwePedestal}
           className="relative aspect-square overflow-hidden rounded-2xl lg:aspect-auto"
           style={{ backgroundImage: "linear-gradient(111deg, #525250 0%, #131313 64%)" }}
@@ -270,7 +270,7 @@ function MosaicProjectsGrid() {
       <div className="flex flex-col gap-10 lg:flex-row lg:items-start lg:justify-between">
         <div className="flex w-full flex-col justify-between gap-10 lg:w-[48.4%]">
           <GlassHoverCardLink
-            href="/projets/axolus"
+            href="/projects/axolus"
             {...portfolioGridGlass.axolusBranding}
             className="relative block aspect-604/336 w-full overflow-hidden rounded-2xl"
             style={{ backgroundImage: "linear-gradient(135deg, #525250 0%, #131313 64%)" }}
@@ -285,7 +285,7 @@ function MosaicProjectsGrid() {
           </GlassHoverCardLink>
           <div className="flex gap-10">
             <GlassHoverCardLink
-              href="/projets/lingo"
+              href="/projects/lingo"
               {...portfolioGridGlass.lingoPhone}
               overlayCtaIconOnly
               overlayCtaClassName="h-7 w-15"
@@ -301,7 +301,7 @@ function MosaicProjectsGrid() {
               />
             </GlassHoverCardLink>
             <GlassHoverCardLink
-              href="/projets/kade"
+              href="/projects/kade"
               {...portfolioGridGlass.lingoPackaging}
               overlayCtaIconOnly
               overlayCtaClassName="h-7 w-15"
@@ -320,7 +320,7 @@ function MosaicProjectsGrid() {
         </div>
 
         <GlassHoverCardLink
-          href="/projets/portail-national-services"
+          href="/projects/portail-national-services"
           {...portfolioGridGlass.servicePublic}
           className="relative block w-full overflow-hidden rounded-2xl lg:w-[48.3%]"
           style={{

@@ -307,7 +307,7 @@ export function PnsCaseStudy({
           </h3>
           <div className="flex flex-col gap-12 lg:flex-row lg:justify-between lg:gap-10">
             <GlassHoverCardLink
-              href="/projets/fiwe"
+              href="/projects/fiwe"
               {...pnsAutresProjetsGlass.fiwe}
               className="relative block h-[min(471px,70vw)] w-full max-w-[604px] overflow-hidden rounded-2xl"
               style={{
@@ -323,7 +323,7 @@ export function PnsCaseStudy({
               />
             </GlassHoverCardLink>
             <GlassHoverCardLink
-              href="/projets/lingo"
+              href="/projects/lingo"
               {...pnsAutresProjetsGlass.lingo}
               className="relative block h-[min(471px,70vw)] w-full max-w-[604px] overflow-hidden rounded-2xl"
               style={{

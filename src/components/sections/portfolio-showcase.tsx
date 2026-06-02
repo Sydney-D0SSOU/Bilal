@@ -34,7 +34,7 @@ type PortfolioPageProject = {
 const portfolioPageProjects = [
   {
     title: "MTN Selfcare",
-    href: "/projets/mtn-selfcare",
+    href: "/projects/mtn-selfcare",
     image: "/projects/listing/Mtn card.png",
     alt: "MTN Selfcare sur piédestal",
     aspectClassName: "aspect-[363/519]",
@@ -43,7 +43,7 @@ const portfolioPageProjects = [
   },
   {
     title: "Axolus",
-    href: "/projets/axolus",
+    href: "/projects/axolus",
     image: "/projects/grid-3.png",
     alt: "Collage branding Axolus",
     aspectClassName: "aspect-[363/204]",
@@ -51,7 +51,7 @@ const portfolioPageProjects = [
   },
   {
     title: "Lingo +",
-    href: "/projets/lingo",
+    href: "/projects/lingo",
     image: "/projects/grid-4.png",
     alt: "Application Lingo + sur smartphone",
     aspectClassName: "aspect-[171/204]",
@@ -59,7 +59,7 @@ const portfolioPageProjects = [
   },
   {
     title: "KADÉ",
-    href: "/projets/kade",
+    href: "/projects/kade",
     image: "/projects/listing/kade.png",
     alt: "Identité KADÉ",
     aspectClassName: "aspect-[171/204]",
@@ -68,7 +68,7 @@ const portfolioPageProjects = [
   },
   {
     title: "Fiwè",
-    href: "/projets/fiwe",
+    href: "/projects/fiwe",
     image: "/projects/grid-2.png",
     alt: "Fiwè sur socles cylindriques",
     aspectClassName: "aspect-[363/519]",
